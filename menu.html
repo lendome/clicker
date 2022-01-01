@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <nav>
+    <button id="backbtn" onclick="window.location.href = 'index.html' ">
+      <svg class="svg-icon" viewBox="0 0 20 20">
+        <path
+          fill="none"
+          d="M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.203,0,0.406-0.08,0.559-0.236c0.303-0.309,0.295-0.803-0.012-1.104L8.388,10.049z"
+        ></path>
+      </svg>
+    </button>
+    <div class="ye">
+      <p>Menu</p>
+    </div>
+  </nav>
+  <body>
+    <p style="height: 8vh"></p>
+    <h1 id="count">Money</h1>
+    <button onclick="upRate()" id="rateUp">Upgrade rate</button>
+    <button onclick="window.location.href = 'stockexchange.html'">
+      Stock exchange
+    </button>
+    <button
+      style="color: rgb(155, 155, 155)"
+      onclick="window.location.href = 'realEstate.html'"
+    >
+      Buy Real estate
+    </button>
+    <button onclick="window.location.href = 'myEstate.html'">
+      My Real estate
+    </button>
+    <button onclick="window.location.href = 'vehicles.html'">
+      Buy Vehicles
+    </button>
+    <button onclick="window.location.href = 'myVehicles.html'">Garage</button>
+    <button
+      style="color: rgb(203, 205, 192)"
+      onclick="alert('lottery is in the works!')"
+    >
+      Lottery
+    </button>
+    <button
+      style="color: rgb(182, 182, 180)"
+      onclick="alert(localStorage.getItem('totalincome').toLocaleString().replace('.', ',')+ '$ is your income per minute.')"
+    >
+      Income per minute
+    </button>
+    <button style="background-color: rgb(163, 59, 59)" onclick="reset()">
+      Reset
+    </button>
+  </body>
+</html>
+<script>
+  //parseInt(localStorage.setItem("rate", 0));
+  document.getElementById("rateUp").innerHTML = `Upgrade Rate (${(
+    parseInt(localStorage.getItem("rate")) *
+      parseInt(localStorage.getItem("rate")) +
+    2 * parseInt(localStorage.getItem("rate"))
+  )
+    .toLocaleString()
+    .replace(".", ",")}$)  Current level: ${parseInt(
+    localStorage.getItem("rate")
+  )}`;
+  document.getElementById("count").innerHTML =
+    parseInt(localStorage.getItem("money")).toLocaleString().replace(".", ",") +
+    "$";
+  function upRate() {
+    localrate = parseInt(localStorage.getItem("rate"));
+    localmoney = parseInt(localStorage.getItem("money"));
+    if (localrate * localrate + 2 * localrate < localmoney) {
+      try {
+        localStorage.setItem("rate", localrate + 1);
+        console.log("upgraded rate to " + localrate + "  ");
+        localStorage.setItem(
+          "money",
+          localStorage.getItem("money") - localrate * localrate + 2 * localrate
+        );
+      } catch (error) {
+        console.log(error);
+        localStorage.setItem("rate", localrate + 1);
+      }
+    } else {
+      alert("insufficient funds.");
+    }
+
+    document.getElementById("rateUp").innerHTML = `Upgrade Rate (${(
+      parseInt(localStorage.getItem("rate")) *
+        parseInt(localStorage.getItem("rate")) +
+      2 * parseInt(localStorage.getItem("rate"))
+    )
+      .toLocaleString()
+      .replace(".", ",")
+      .toLocaleString()
+      .replace(".", ",")}$) Current level: ${parseInt(
+      localStorage.getItem("rate")
+    )}`;
+    document.getElementById("count").innerHTML =
+      parseInt(localStorage.getItem("money"))
+        .toLocaleString()
+        .replace(".", ",") + "$";
+  }
+
+  function reset() {
+    localStorage.setItem("init", 0);
+    window.location.assign("index.html");
+  }
+</script>

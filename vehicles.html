@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <nav>
+    <button id="backbtn" onclick="window.location.href = 'menu.html' ">
+      <svg class="svg-icon" viewBox="0 0 20 20">
+        <path
+          fill="none"
+          d="M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.203,0,0.406-0.08,0.559-0.236c0.303-0.309,0.295-0.803-0.012-1.104L8.388,10.049z"
+        ></path>
+      </svg>
+    </button>
+    <div class="ye">
+      <p>Menu</p>
+    </div>
+  </nav>
+  <body>
+    <p style="height: 15vh"></p>
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <p>Do you want to buy:</p>
+        <p id="houseName">houseName</p>
+        <p id="housePrice">for NaN$?</p>
+        <button onclick="buyVehicle()" id="buybtn">Buy</button>
+        <button onclick="lastVehicles('-1')">cancel</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    refresh();
+    function lastVehicles(id) {
+      localStorage.setItem("lastVehicle", id);
+      console.log(id);
+      console.log(JSON.parse(localStorage.getItem("vehicles"))[0]);
+      //window.location.href = "currstock.html";
+      if (document.getElementById("myModal").style.display == "none") {
+        document.getElementById("myModal").style.display = "block";
+        estates = JSON.parse(localStorage.getItem("vehicles"));
+        document.getElementById("houseName").innerHTML = estates[id].name;
+        document.getElementById("housePrice").innerHTML =
+          "for " + estates[id].price.toLocaleString().replace(".", ",") + "$?";
+      } else {
+        document.getElementById("myModal").style.display = "none";
+      }
+    }
+
+    function buyVehicle() {
+      last = localStorage.getItem("lastVehicle");
+      all = JSON.parse(localStorage.getItem("vehicles"));
+      if (
+        parseInt(localStorage.getItem("money")) >= parseInt(all[last].price)
+      ) {
+        console.log("you can afford this.");
+        localStorage.setItem(
+          "money",
+          parseInt(localStorage.getItem("money")) - parseInt(all[last].price)
+        );
+        document.getElementById("myModal").style.display = "none";
+        console.log(all[last]);
+
+        hehe = JSON.parse(localStorage.getItem("ownedVehicles"));
+        console.log(hehe);
+        hehe.push(all[last]);
+        localStorage.setItem("ownedVehicles", JSON.stringify(hehe));
+        console.log(localStorage.getItem("ownedVehicles"));
+      } else {
+        alert("Insufficient funds.");
+      }
+    }
+
+    function refresh() {
+      let availableRE;
+      availableRE = JSON.parse(localStorage.getItem("vehicles"));
+      for (let i = 0; i < availableRE.length; i++) {
+        btn = document.createElement("div");
+        btn.innerHTML = `<button id="${i}" onclick="lastVehicles(this.id)"><p style="float: left;">${i}</p>${
+          availableRE[i].name +
+          " " +
+          availableRE[i].price.toLocaleString().replace(".", ",") +
+          "$"
+        }</button>`;
+
+        document.body.appendChild(btn);
+      }
+    }
+  </script>
+</html>

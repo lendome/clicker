@@ -1,0 +1,148 @@
+/*#FFF587
+#FF8C64
+#FF665A
+#7D6B7D
+#A3A1A8*/
+
+nav {
+  width: 100%;
+  background-color: #423e4d;
+  color: aliceblue;
+  position: fixed;
+  color: rgb(255, 255, 255);
+  border-bottom: solid #7d6b7d;
+}
+
+nav a {
+  color: #b3b3b3;
+  margin: 2%;
+  text-decoration: none;
+}
+* {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(153, 153, 153);
+  outline: none;
+  user-select: none;
+}
+#moneButton {
+  background-color: rgb(56, 59, 63);
+  width: 100vw;
+  height: 90vh;
+  border: none;
+  transition: font-size 0.1s, background-color 10000s;
+}
+#moneButton:active {
+  font-size: large;
+  background-color: #ffffff;
+}
+button {
+  background-color: rgb(42, 44, 51);
+  width: 100%;
+  color: rgb(182, 182, 182);
+  border: none;
+  padding: 2%;
+  margin-bottom: 2%;
+}
+button:active {
+  background-color: rgb(28, 29, 34);
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: rgb(34, 34, 34);
+  text-align: center;
+}
+body {
+  background-color: rgb(56, 59, 63);
+}
+
+h1 {
+  text-align: center;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  text-align: center;
+  background-color: rgb(56, 59, 63);
+
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+#houseName {
+  color: rgb(240, 113, 113);
+  font-weight: bold;
+}
+#housePrice {
+  color: rgb(240, 113, 113);
+  font-weight: bold;
+}
+#houseRent {
+  color: rgb(240, 113, 113);
+  font-weight: bold;
+}
+.modal-content button {
+  margin-bottom: 1%;
+  color: white;
+  background-color: rgb(184, 92, 92);
+}
+/* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+.svg-icon {
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: rgb(182, 182, 182);
+}
+
+.svg-icon circle {
+  stroke: rgb(182, 182, 182);
+  stroke-width: 1;
+}
+#backbtn {
+  width: fit-content;
+  padding: 0;
+  background: none;
+  border: none;
+  float: left;
+  margin-top: 2%;
+}
+#count {
+  margin: 3%;
+}
+#buybtn {
+  background-color: rgb(42, 165, 83);
+  color: aliceblue;
+}
+#buybtn:active {
+  background-color: rgb(142, 207, 164);
+  color: rgb(60, 66, 71);
+}
+.ye {
+  position: fixed;
+  top: 3vh;
+  right: 45%;
+}
+.ye p {
+  color: rgb(176, 185, 192);
+}

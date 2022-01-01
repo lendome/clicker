@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <nav>
+    <a href="menu.html">back</a>
+  </nav>
+  <body>
+    <button id="pizzaria" onclick="lastStock(this.id)">Pizzaria</button>
+  </body>
+  <script>
+    function lastStock(id) {
+      localStorage.setItem("laststock", id);
+      console.log(id);
+      //window.location.href = "currstock.html";
+    }
+  </script>
+</html>
