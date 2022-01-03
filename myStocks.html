@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <nav>
+    <button id="backbtn" onclick="window.location.href = 'menu.html' ">
+      <svg class="svg-icon" viewBox="0 0 20 20">
+        <path
+          fill="none"
+          d="M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.203,0,0.406-0.08,0.559-0.236c0.303-0.309,0.295-0.803-0.012-1.104L8.388,10.049z"
+        ></path>
+      </svg>
+    </button>
+    <div class="ye">
+      <p>My stocks</p>
+    </div>
+  </nav>
+  <body>
+    <p style="height: 15vh"></p>
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <p id="houseName">houseName</p>
+        <p>Units owned:</p>
+        <p id="units"></p>
+        <p>Change since purchased:</p>
+        <p id="change"></p>
+
+        <br />
+        <p>Sell shares</p>
+        <div class="slidecontainer">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="1"
+            class="slider"
+            id="myRange"
+          />
+          <p id="output">ammount</p>
+        </div>
+        <button id="buybtn" onclick="sell()">Sell</button>
+        <button onclick="lastEstate('-1')">back</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    refresh();
+    function refresh() {
+      let availableRE;
+      availableRE = JSON.parse(localStorage.getItem("ownedStocks"));
+      for (let i = 0; i < availableRE.length; i++) {
+        btn = document.createElement("div");
+        btn.innerHTML = `<button id="${i}" onclick="lastEstate(this.id)">
+          <p style="float: left;">${i}</p>${
+          availableRE[i].Name + ", " + availableRE[i].owned + " shares owned."
+        }</button>`;
+
+        document.body.appendChild(btn);
+      }
+    }
+    let lastCurr;
+    let lastindex;
+    function lastEstate(id) {
+      if (document.getElementById("myModal").style.display == "block") {
+        document.getElementById("myModal").style.display = "none";
+      } else {
+        document.getElementById("myModal").style.display = "block";
+        estates = JSON.parse(localStorage.getItem("ownedStocks"));
+        document.getElementById("houseName").innerHTML = estates[id].Name;
+        document.getElementById("units").innerHTML =
+          estates[id].owned.toLocaleString() + " shares owned.";
+        document.getElementById("myRange").setAttribute(
+          "max",
+
+          estates[id].owned
+        );
+
+        mystock = JSON.parse(localStorage.getItem("stocks"));
+        let match = false;
+        let heh = 0;
+        for (var i = 0; i < mystock.length; i++) {
+          if (estates[id].Name == mystock[i].Name) {
+            match = true;
+            heh = i;
+          }
+        }
+        document.getElementById("change").innerHTML =
+          parseInt((mystock[heh].currValue / estates[id].pVal) * 100 - 100) +
+          "%";
+        console.log(mystock);
+        console.log(heh);
+        lastCurr = mystock[heh].currValue;
+        console.log(lastCurr);
+        lastindex = id;
+      }
+    }
+    function sell() {
+      if (
+        JSON.parse(localStorage.getItem("ownedStocks"))[lastindex].owned > 0
+      ) {
+        localStorage.setItem(
+          "money",
+          parseInt(localStorage.getItem("money")) +
+            lastCurr * document.getElementById("myRange").value
+        );
+        estates = JSON.parse(localStorage.getItem("ownedStocks"));
+        estates[lastindex].owned -= document.getElementById("myRange").value;
+        window.location.assign("myStocks.html");
+        localStorage.setItem("ownedStocks", JSON.stringify(estates));
+      } else {
+        alert("You dont own enough shares!");
+      }
+    }
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("output");
+    output.innerHTML = slider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function () {
+      output.innerHTML = this.value + " shares for " + lastCurr * this.value;
+    };
+  </script>
+</html>

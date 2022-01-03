@@ -25,9 +25,16 @@
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
+        <img id="houseImg" src="" alt="" />
+        <img
+          id="sale"
+          src="https://cutewallpaper.org/24/for-sale-png/for-sale-stamp-psd-psdstamps.png"
+          alt=""
+        />
         <p>Do you want to buy:</p>
         <p id="houseName">houseName</p>
         <p id="housePrice">for NaN$?</p>
+
         <button onclick="buyVehicle()" id="buybtn">Buy</button>
         <button onclick="lastVehicles('-1')">cancel</button>
       </div>
@@ -36,19 +43,19 @@
   <script>
     refresh();
     function lastVehicles(id) {
-      localStorage.setItem("lastVehicle", id);
       console.log(id);
       console.log(JSON.parse(localStorage.getItem("vehicles"))[0]);
       //window.location.href = "currstock.html";
-      if (document.getElementById("myModal").style.display == "none") {
+      if (document.getElementById("myModal").style.display == "block") {
+        document.getElementById("myModal").style.display = "none";
+      } else {
         document.getElementById("myModal").style.display = "block";
         estates = JSON.parse(localStorage.getItem("vehicles"));
         document.getElementById("houseName").innerHTML = estates[id].name;
         document.getElementById("housePrice").innerHTML =
-          "for " + estates[id].price.toLocaleString().replace(".", ",") + "$?";
-      } else {
-        document.getElementById("myModal").style.display = "none";
+          "for " + estates[id].price.toLocaleString() + "$?";
       }
+      localStorage.setItem("lastVehicle", id);
     }
 
     function buyVehicle() {
@@ -83,7 +90,7 @@
         btn.innerHTML = `<button id="${i}" onclick="lastVehicles(this.id)"><p style="float: left;">${i}</p>${
           availableRE[i].name +
           " " +
-          availableRE[i].price.toLocaleString().replace(".", ",") +
+          availableRE[i].price.toLocaleString() +
           "$"
         }</button>`;
 

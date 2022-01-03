@@ -8,16 +8,150 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <nav>
-    <a href="menu.html">back</a>
+    <button id="backbtn" onclick="window.location.href = 'menu.html' ">
+      <svg class="svg-icon" viewBox="0 0 20 20">
+        <path
+          fill="none"
+          d="M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.203,0,0.406-0.08,0.559-0.236c0.303-0.309,0.295-0.803-0.012-1.104L8.388,10.049z"
+        ></path>
+      </svg>
+    </button>
+    <div class="ye">
+      <p>Stocks</p>
+    </div>
   </nav>
   <body>
-    <button id="pizzaria" onclick="lastStock(this.id)">Pizzaria</button>
+    <p style="height: 10vh"></p>
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <p id="totalInfo" style="display: inline">
+          Total value of stock: value
+        </p>
+        <p id="pps">Price per share: pps</p>
+        <h3>How many shares to buy?</h3>
+        <div class="slidecontainer">
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="1"
+            class="slider"
+            id="myRange"
+          />
+          <p id="output">ammount</p>
+        </div>
+        <button onclick="buyShares()" id="buybtn">Buy</button>
+        <button onclick="lastStock('-1')">cancel</button>
+      </div>
+    </div>
   </body>
   <script>
+    let lastCurr = 0;
+    let lastTotal = 0;
     function lastStock(id) {
-      localStorage.setItem("laststock", id);
       console.log(id);
+      console.log(JSON.parse(localStorage.getItem("stocks"))[0]);
       //window.location.href = "currstock.html";
+      if (document.getElementById("myModal").style.display == "block") {
+        document.getElementById("myModal").style.display = "none";
+        var output = document.getElementById("output");
+        output.innerHTML = "1 share for";
+        document.getElementById("myRange").value = 1;
+      } else {
+        document.getElementById("myModal").style.display = "block";
+        estates = JSON.parse(localStorage.getItem("stocks"));
+        lastCurr = estates[id].currValue;
+        lastTotal = estates[id].totalValue;
+        if (parseInt(localStorage.getItem("money")) < lastTotal) {
+          document.getElementById("myRange").setAttribute(
+            "max",
+
+            parseInt(estates[id].totalValue) / parseInt(estates[id].currValue)
+          );
+        } else {
+          document.getElementById("myRange").setAttribute(
+            "max",
+
+            parseInt(localStorage.getItem("money")) / lastCurr
+          );
+        }
+        document.getElementById(
+          "totalInfo"
+        ).innerHTML = `Total value of ${estates[id].Name}: ${estates[id].totalValue}$`;
+        document.getElementById("pps").innerHTML = `Price per share: ${parseInt(
+          estates[id].currValue
+        )}$`;
+      }
+      localStorage.setItem("lastStock", id);
     }
+    function buyShares() {
+      if (
+        parseInt(localStorage.getItem("money")) >
+        lastCurr * document.getElementById("myRange").value
+      ) {
+        last = localStorage.getItem("lastStock");
+        all = JSON.parse(localStorage.getItem("stocks"));
+        sum =
+          parseInt(localStorage.getItem("money")) -
+          all[last].currValue * document.getElementById("myRange").value;
+        console.log(sum);
+        localStorage.setItem("money", sum);
+        mystock = JSON.parse(localStorage.getItem("ownedStocks"));
+        let match = false;
+        let heh = 0;
+        for (var i = 0; i < mystock.length; i++) {
+          if (all[last].Name == mystock[i].Name) {
+            match = true;
+            heh = i;
+          }
+
+          //Do something
+        }
+        if (match) {
+          mystock[heh].owned =
+            parseInt(mystock[heh].owned) +
+            parseInt(document.getElementById("myRange").value);
+        } else {
+          mystock.push({
+            Name: all[last].Name,
+            owned: document.getElementById("myRange").value,
+            pVal: all[last].currValue,
+          });
+        }
+        localStorage.setItem("ownedStocks", JSON.stringify(mystock));
+        console.log(localStorage.getItem("ownedStocks"));
+      } else {
+        alert("insufficient funds!");
+      }
+    }
+    refresh();
+    function refresh() {
+      let stocks;
+      stocks = JSON.parse(localStorage.getItem("stocks"));
+      for (let i = 0; i < stocks.length; i++) {
+        btn = document.createElement("div");
+        btn.innerHTML = `<button id="${i}" onclick="lastStock(this.id)">
+          <p style="float: left;">${i}</p>${stocks[i].Name}</button>`;
+
+        document.body.appendChild(btn);
+      }
+    }
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("output");
+    output.innerHTML = slider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function () {
+      output.innerHTML =
+        this.value +
+        " shares for " +
+        (lastCurr * this.value).toLocaleString() +
+        "$";
+    };
+    /*Name: "Borgir shop",
+      totalValue: "20.000.000",
+      currValue: "3",
+      owned: "0",*/
   </script>
 </html>

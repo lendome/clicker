@@ -22,6 +22,18 @@
   </nav>
   <body>
     <p style="height: 10vh"></p>
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <img id="houseImg" src="" alt="" />
+        <p id="houseName">houseName</p>
+        <p id="housePrice">for NaN$?</p>
+        <p>Rent per minute:</p>
+        <p id="houseRent"></p>
+        <br />
+        <button onclick="lastEstate('-1')">back</button>
+      </div>
+    </div>
   </body>
   <script>
     refresh();
@@ -41,6 +53,21 @@
         }</button>`;
 
         document.body.appendChild(btn);
+      }
+    }
+    function lastEstate(id) {
+      if (document.getElementById("myModal").style.display == "block") {
+        document.getElementById("myModal").style.display = "none";
+      } else {
+        document.getElementById("myModal").style.display = "block";
+        document.getElementById("myModal").style.display = "block";
+        estates = JSON.parse(localStorage.getItem("ownedEstate"));
+        document.getElementById("houseName").innerHTML = estates[id].name;
+        document.getElementById("houseRent").innerHTML =
+          estates[id].rentIncome.toLocaleString() + "$";
+        document.getElementById("housePrice").innerHTML =
+          "Value: " + estates[id].price.toLocaleString() + "$";
+        document.getElementById("houseImg").src = estates[id].img;
       }
     }
   </script>

@@ -27,6 +27,7 @@
     <button onclick="window.location.href = 'stockexchange.html'">
       Stock exchange
     </button>
+    <button onclick="window.location.href = 'myStocks.html'">My stocks</button>
     <button
       style="color: rgb(155, 155, 155)"
       onclick="window.location.href = 'realEstate.html'"
@@ -42,27 +43,28 @@
     <button onclick="window.location.href = 'myVehicles.html'">Garage</button>
     <button
       style="color: rgb(203, 205, 192)"
-      onclick="alert('lottery is in the works!')"
+      onclick="window.location.href = 'lottery.html'"
     >
-      Lottery
+      Arcade
     </button>
     <button
       style="color: rgb(182, 182, 180)"
-      onclick="alert(localStorage.getItem('totalincome').toLocaleString().replace('.', ',')+ '$ is your income per minute.')"
+      onclick="alert(localStorage.getItem('totalincome').toLocaleString()+ '$ is your income per minute.')"
     >
       Income per minute
     </button>
-    <button style="background-color: rgb(163, 59, 59)" onclick="reset()">
-      Reset
+    <button
+      onclick="window.location.href = 'settings.html'"
+      style="background-color: rgb(161, 132, 35); color: black"
+    >
+      Settings
     </button>
   </body>
 </html>
 <script>
   //parseInt(localStorage.setItem("rate", 0));
   document.getElementById("rateUp").innerHTML = `Upgrade Rate (${(
-    parseInt(localStorage.getItem("rate")) *
-      parseInt(localStorage.getItem("rate")) +
-    2 * parseInt(localStorage.getItem("rate"))
+    parseInt(localStorage.getItem("rate")) * 19
   )
     .toLocaleString()
     .replace(".", ",")}$)  Current level: ${parseInt(
@@ -74,13 +76,13 @@
   function upRate() {
     localrate = parseInt(localStorage.getItem("rate"));
     localmoney = parseInt(localStorage.getItem("money"));
-    if (localrate * localrate + 2 * localrate < localmoney) {
+    if (localrate * 19 < localmoney) {
       try {
         localStorage.setItem("rate", localrate + 1);
         console.log("upgraded rate to " + localrate + "  ");
         localStorage.setItem(
           "money",
-          localStorage.getItem("money") - localrate * localrate + 2 * localrate
+          localStorage.getItem("money") - localrate * 19
         );
       } catch (error) {
         console.log(error);
@@ -91,9 +93,7 @@
     }
 
     document.getElementById("rateUp").innerHTML = `Upgrade Rate (${(
-      parseInt(localStorage.getItem("rate")) *
-        parseInt(localStorage.getItem("rate")) +
-      2 * parseInt(localStorage.getItem("rate"))
+      parseInt(localStorage.getItem("rate")) * 19
     )
       .toLocaleString()
       .replace(".", ",")
@@ -105,10 +105,5 @@
       parseInt(localStorage.getItem("money"))
         .toLocaleString()
         .replace(".", ",") + "$";
-  }
-
-  function reset() {
-    localStorage.setItem("init", 0);
-    window.location.assign("index.html");
   }
 </script>

@@ -1,0 +1,133 @@
+/*
+#ffbf00
+#e83f6f
+#2274a5
+#32936f
+#ffffff
+*/
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300;400;500;600;700&display=swap");
+* {
+  font-family: "Quicksand", Arial, Helvetica, sans-serif;
+}
+footer {
+  position: fixed;
+  bottom: 2%;
+  background-color: #e83f6f;
+  width: 90vw;
+  left: 5vw;
+  text-align: center;
+  border-radius: 30px;
+  color: aliceblue;
+}
+
+nav {
+  width: 90%;
+  background-color: #ffbf00;
+  color: aliceblue;
+  position: fixed;
+  left: 5vw;
+  top: 2vh;
+  color: rgba(0, 0, 0, 0.535);
+  border-radius: 30px;
+}
+
+body {
+  background-color: #32936f;
+  margin: 0;
+}
+#moneButton {
+  background-color: #2274a5;
+  width: 100vw;
+  height: 90vh;
+  border-radius: 30px;
+  border: none;
+  transition: font-size 0.1s;
+  margin-top: 9vh;
+  margin-left: 0;
+  color: aliceblue;
+}
+#moneButton:active {
+  font-size: large;
+}
+.svg-icon {
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #e83f6f;
+}
+
+.svg-icon circle {
+  stroke: #e83f6f;
+  stroke-width: 1;
+}
+#backbtn {
+  width: fit-content;
+  padding: 0;
+  background: none;
+  border: none;
+  float: left;
+  margin-top: 1%;
+  margin-left: 2%;
+}
+.ye {
+  position: fixed;
+  top: 1vh;
+  right: 45%;
+}
+h1 {
+  text-align: center;
+}
+#count {
+  margin: 3%;
+  color: aliceblue;
+}
+button {
+  width: 90%;
+  background-color: #e83f6f;
+  padding: 2%;
+  border: none;
+  color: white;
+  border-radius: 20px;
+  margin: 2%;
+  margin-left: 5%;
+}
+button:active {
+  background-color: #dd97ab;
+  color: black;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  text-align: center;
+  background-color: #ffbf00;
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.5);
+
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+#buybtn {
+  background-color: rgb(42, 165, 83);
+  color: aliceblue;
+}
+#buybtn:active {
+  background-color: rgb(142, 207, 164);
+  color: rgb(60, 66, 71);
+}

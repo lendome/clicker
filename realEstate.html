@@ -25,11 +25,18 @@
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
+        <img id="houseImg" src="" alt="" />
+        <img
+          id="sale"
+          src="https://cutewallpaper.org/24/for-sale-png/for-sale-stamp-psd-psdstamps.png"
+          alt=""
+        />
         <p>Do you want to buy:</p>
         <p id="houseName">houseName</p>
         <p id="housePrice">for NaN$?</p>
         <p>Rent per minute:</p>
         <p id="houseRent"></p>
+
         <button onclick="buyEstate()" id="buybtn">Buy</button>
         <button onclick="lastEstate('-1')">cancel</button>
       </div>
@@ -37,22 +44,39 @@
   </body>
   <script>
     refresh();
+    function refresh() {
+      let availableRE;
+      availableRE = JSON.parse(localStorage.getItem("availableRE"));
+      for (let i = 0; i < availableRE.length; i++) {
+        btn = document.createElement("div");
+        btn.innerHTML = `<button id="${i}" onclick="lastEstate(this.id)">
+          <p style="float: left;">${i}</p>${
+          availableRE[i].name +
+          " " +
+          availableRE[i].price.toLocaleString() +
+          "$"
+        }</button>`;
+
+        document.body.appendChild(btn);
+      }
+    }
     function lastEstate(id) {
-      localStorage.setItem("lastEstate", id);
       console.log(id);
       console.log(JSON.parse(localStorage.getItem("availableRE"))[0]);
       //window.location.href = "currstock.html";
-      if (document.getElementById("myModal").style.display == "none") {
+      if (document.getElementById("myModal").style.display == "block") {
+        document.getElementById("myModal").style.display = "none";
+      } else {
         document.getElementById("myModal").style.display = "block";
         estates = JSON.parse(localStorage.getItem("availableRE"));
         document.getElementById("houseName").innerHTML = estates[id].name;
         document.getElementById("houseRent").innerHTML =
-          estates[id].rentIncome.toLocaleString().replace(".", ",") + "$";
+          estates[id].rentIncome.toLocaleString() + "$";
         document.getElementById("housePrice").innerHTML =
-          "for " + estates[id].price.toLocaleString().replace(".", ",") + "$?";
-      } else {
-        document.getElementById("myModal").style.display = "none";
+          "for " + estates[id].price.toLocaleString() + "$?";
+        document.getElementById("houseImg").src = estates[id].img;
       }
+      localStorage.setItem("lastEstate", id);
     }
 
     function buyEstate() {
@@ -74,24 +98,12 @@
         hehe.push(all[last]);
         localStorage.setItem("ownedEstate", JSON.stringify(hehe));
         console.log(localStorage.getItem("ownedEstate"));
+        haha = JSON.parse(localStorage.getItem("availableRE"));
+        haha.splice(last, 1);
+        localStorage.setItem("availableRE", JSON.stringify(haha));
+        window.location.assign("realEstate.html");
       } else {
         alert("Insufficient funds.");
-      }
-    }
-    function refresh() {
-      let availableRE;
-      availableRE = JSON.parse(localStorage.getItem("availableRE"));
-      for (let i = 0; i < availableRE.length; i++) {
-        btn = document.createElement("div");
-        btn.innerHTML = `<button id="${i}" onclick="lastEstate(this.id)">
-          <p style="float: left;">${i}</p>${
-          availableRE[i].name +
-          " " +
-          availableRE[i].price.toLocaleString().replace(".", ",") +
-          "$"
-        }</button>`;
-
-        document.body.appendChild(btn);
       }
     }
   </script>

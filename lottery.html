@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="lottery.js" defer></script>
+  </head>
+  <nav>
+    <button id="backbtn" onclick="window.location.href = 'menu.html' ">
+      <svg class="svg-icon" viewBox="0 0 20 20">
+        <path
+          fill="none"
+          d="M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.203,0,0.406-0.08,0.559-0.236c0.303-0.309,0.295-0.803-0.012-1.104L8.388,10.049z"
+        ></path>
+      </svg>
+    </button>
+    <div class="ye">
+      <p>Arcade</p>
+    </div>
+  </nav>
+  <body>
+    <p style="height: 10vh"></p>
+    <button onclick="openModal('coinFlip')">Coinflip</button>
+    <button onclick="openModal('Lottery')">Lotto</button>
+    <div id="coinFlip" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <h1>Coinflip</h1>
+        <p>
+          After you place your bet and choosing your side of the coin, you have
+          a 50% chance of winning or losing.
+        </p>
+        <br />
+        <div class="bet">
+          your bet:
+          <p id="betValue">0</p>
+          <button onclick="reset()" style="background-color: rgb(76, 173, 76)">
+            clear
+          </button>
+          <button id="10" onclick="addVal(this.id)">+10</button
+          ><button id="100" onclick="addVal(this.id)">+100</button
+          ><button id="1000" onclick="addVal(this.id)">+1000</button>
+        </div>
+        <br />
+        <button class="betBtn" id="heads" onclick="betSide(this.id)">
+          Heads
+        </button>
+        <button class="betBtn" id="tails" onclick="betSide(this.id)">
+          Tails
+        </button>
+        <button id="buybtn" onclick="coinFlip()">Bet</button>
+        <button onclick="openModal('coinFlip')">Cancel</button>
+      </div>
+    </div>
+    <div id="Lottery" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <h1>Lotto</h1>
+        <p>
+          After placing your bet, you will have a chance of winning high
+          ammounts of money. Higher bet equals higher chance of victory.
+        </p>
+        <br />
+        <div class="bet">
+          your bet:
+          <p id="betValue2">0</p>
+          <button onclick="reset()" style="background-color: rgb(76, 173, 76)">
+            clear
+          </button>
+          <button id="10" onclick="addValt(this.id)">+10</button
+          ><button id="100" onclick="addValt(this.id)">+100</button
+          ><button id="1000" onclick="addValt(this.id)">+1000</button>
+        </div>
+        <br />
+        <button id="buybtn" onclick="Lottery()">Bet</button>
+        <button onclick="openModal('Lottery')">Cancel</button>
+      </div>
+    </div>
+  </body>
+</html>

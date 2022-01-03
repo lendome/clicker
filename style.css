@@ -30,11 +30,10 @@ nav a {
   width: 100vw;
   height: 90vh;
   border: none;
-  transition: font-size 0.1s, background-color 10000s;
+  transition: font-size 0.1s;
 }
 #moneButton:active {
   font-size: large;
-  background-color: #ffffff;
 }
 button {
   background-color: rgb(42, 44, 51);
@@ -83,6 +82,18 @@ h1 {
   padding: 20px;
   width: 80%; /* Could be more or less, depending on screen size */
 }
+.modal-content img {
+  width: 75%;
+  z-index: 0;
+  border: solid white;
+  min-height: 25vh;
+}
+#sale {
+  position: absolute;
+  left: 12%;
+  border: none;
+  top: 10%;
+}
 #houseName {
   color: rgb(240, 113, 113);
   font-weight: bold;
@@ -99,6 +110,11 @@ h1 {
   margin-bottom: 1%;
   color: white;
   background-color: rgb(184, 92, 92);
+}
+.modal-content button:active {
+  margin-bottom: 1%;
+  color: rgb(0, 0, 0);
+  background-color: rgb(206, 151, 151);
 }
 /* -----
 SVG Icons - svgicons.sparkk.fr
@@ -126,6 +142,7 @@ SVG Icons - svgicons.sparkk.fr
   border: none;
   float: left;
   margin-top: 2%;
+  margin-left: 2%;
 }
 #count {
   margin: 3%;
@@ -145,4 +162,73 @@ SVG Icons - svgicons.sparkk.fr
 }
 .ye p {
   color: rgb(176, 185, 192);
+}
+.bet {
+  background-color: rgba(0, 0, 0, 0.473);
+  width: fit-content;
+  margin: auto;
+}
+.betBtn {
+  width: 49%;
+  background-color: #2f2842 !important;
+}
+.betBtn:hover {
+  width: 49%;
+  background-color: #7a6ca1 !important;
+}
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #ffffff; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+}
+
+/* Mouse-over effects */
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #f0fc0e; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #ffffff; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+#tip {
+  position: fixed;
+  text-align: center;
+  width: 50%;
+  left: 25%;
+  bottom: 5vh;
+  color: #ffffff35;
+  transition: color 1s;
+}
+#tip:hover {
+  position: fixed;
+  font-size: large;
+  text-align: center;
+  width: 50%;
+  left: 25%;
+  bottom: 5vh;
+  color: #ff5a5a;
+}
+button img {
+  width: 2%;
 }
