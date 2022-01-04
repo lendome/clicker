@@ -55,13 +55,15 @@
       let availableRE;
       availableRE = JSON.parse(localStorage.getItem("ownedStocks"));
       for (let i = 0; i < availableRE.length; i++) {
-        btn = document.createElement("div");
-        btn.innerHTML = `<button id="${i}" onclick="lastEstate(this.id)">
+        if (availableRE[i].owned != 0) {
+          btn = document.createElement("div");
+          btn.innerHTML = `<button id="${i}" onclick="lastEstate(this.id)">
           <p style="float: left;">${i}</p>${
-          availableRE[i].Name + ", " + availableRE[i].owned + " shares owned."
-        }</button>`;
+            availableRE[i].Name + ", " + availableRE[i].owned + " shares owned."
+          }</button>`;
 
-        document.body.appendChild(btn);
+          document.body.appendChild(btn);
+        }
       }
     }
     let lastCurr;

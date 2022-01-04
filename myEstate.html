@@ -31,6 +31,7 @@
         <p>Rent per minute:</p>
         <p id="houseRent"></p>
         <br />
+        <button onclick="upgradeHome()" id="buybtn">Upgrade</button>
         <button onclick="lastEstate('-1')">back</button>
       </div>
     </div>
@@ -47,7 +48,7 @@
           availableRE[i].name +
           " " +
           availableRE[i].price +
-          "$. Rent per hour: " +
+          "$. Rent per minute: " +
           availableRE[i].rentIncome +
           "$"
         }</button>`;
@@ -55,6 +56,47 @@
         document.body.appendChild(btn);
       }
     }
+    let lastid;
+    function upgradeHome() {
+      estates = JSON.parse(localStorage.getItem("ownedEstate"));
+      if (
+        parseInt(localStorage.getItem("money")) >=
+        estates[lastid].rentIncome * 15
+      ) {
+        localStorage.setItem(
+          "money",
+          parseInt(localStorage.getItem("money")) -
+            estates[lastid].rentIncome * 15
+        );
+        estates[lastid].rentIncome = estates[lastid].rentIncome * 2;
+        localStorage.setItem("ownedEstate", JSON.stringify(estates));
+        document.getElementById("houseRent").innerHTML =
+          estates[lastid].rentIncome.toLocaleString() + "$";
+
+        document.getElementById("buybtn").innerHTML =
+          "Upgrade " +
+          upgrades[Math.floor(Math.random() * upgrades.length)] +
+          " " +
+          estates[lastid].rentIncome * 15 +
+          "$";
+      } else {
+        alert("insufficient funds!");
+      }
+    }
+    let upgrades = [
+      "Floor heating",
+      "Lights",
+      "Windows",
+      "TV's",
+      "Door handles",
+      "Door mats",
+      "painting on the wall",
+      "Furniture",
+      "some stuff",
+      "clients",
+      "Kitchen",
+      "walls",
+    ];
     function lastEstate(id) {
       if (document.getElementById("myModal").style.display == "block") {
         document.getElementById("myModal").style.display = "none";
@@ -68,6 +110,13 @@
         document.getElementById("housePrice").innerHTML =
           "Value: " + estates[id].price.toLocaleString() + "$";
         document.getElementById("houseImg").src = estates[id].img;
+        document.getElementById("buybtn").innerHTML =
+          "Upgrade " +
+          upgrades[Math.floor(Math.random() * upgrades.length)] +
+          " " +
+          estates[id].rentIncome * 15 +
+          "$";
+        lastid = id;
       }
     }
   </script>

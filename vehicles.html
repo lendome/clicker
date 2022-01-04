@@ -54,6 +54,7 @@
         document.getElementById("houseName").innerHTML = estates[id].name;
         document.getElementById("housePrice").innerHTML =
           "for " + estates[id].price.toLocaleString() + "$?";
+        document.getElementById("houseImg").src = estates[id].img;
       }
       localStorage.setItem("lastVehicle", id);
     }

@@ -11,6 +11,7 @@ nav {
   position: fixed;
   color: rgb(255, 255, 255);
   border-bottom: solid #7d6b7d;
+  z-index: 2;
 }
 
 nav a {
@@ -31,6 +32,7 @@ nav a {
   height: 90vh;
   border: none;
   transition: font-size 0.1s;
+  position: inherit;
 }
 #moneButton:active {
   font-size: large;
@@ -42,6 +44,7 @@ button {
   border: none;
   padding: 2%;
   margin-bottom: 2%;
+  position: relative;
 }
 button:active {
   background-color: rgb(28, 29, 34);
@@ -231,4 +234,31 @@ SVG Icons - svgicons.sparkk.fr
 }
 button img {
   width: 2%;
+}
+.buttonicon {
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  height: 80%;
+}
+.owe button {
+  background-color: rgb(65, 100, 11);
+}
+.owe button:active {
+  background-color: rgb(125, 162, 71);
+  color: black;
+}
+.owe {
+  display: none;
+}
+.creator {
+  background-color: #434147;
+  text-align: center;
+}
+
+.creator input {
+  width: 80vw;
+  padding: 1%;
+  border: #2f2842 solid;
+  margin: 1%;
 }

@@ -60,7 +60,7 @@ function coinFlip() {
       }
       if (luckyNum > 49 && betSid == "heads") {
         console.log("loss");
-        alert("It was heads, you lost");
+        alert("It was tails, you lost");
       }
       if (luckyNum > 49 && betSid == "tails") {
         console.log("win");
@@ -72,7 +72,7 @@ function coinFlip() {
       }
       if (luckyNum < 49 && betSid == "tails") {
         console.log("loss");
-        alert("It was tails, you lost");
+        alert("It was heads, you lost");
       }
     } else {
       alert("Insufficient funds!");

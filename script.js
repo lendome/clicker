@@ -16,7 +16,7 @@ var Random = [
   "Careful with the reset. One click and all your progress is gone.",
   "Any features you would like to have? Let me know on discord. Can be found in settings!",
   "The changes to the value of a stocks are hourly. So thats the time to check a stocks value for profit.",
-  "The lowest value a stock can have is 3, and the highest 10000000.",
+  "The lowest value a stock can have is 3, and the highest 90.",
   "Have you just bought a real estate and your income per minute didnt increase? go to the main screen and back to menu again.",
   "The goblins inside of the upgrade machine get tired if the button is overused. its also not very profitable.",
   "Even though it says /hour under me, the payouts are minutely.",
@@ -29,14 +29,20 @@ var Random = [
   "Your chance doesnt actually increase in lotto with more money on the line. Its a lie to make you lose.",
   "Chance of victory is 2% in lotto, and about 50% in coinflip. I said about due to another tip.",
   "Income per minute may be inaccurate at times.",
-  "I added Creator because i didnt want to add real estate manually.",
+  "I added Creator because i didnt want to add more real estate.",
   "Dont trust the sympathic alerts. They are bait.",
   "One of the real estates is a friend's old house.",
   "Lendo is the best stock. Invest in it.",
   "If it didnt have ads, id probably be dead.",
   "I dont know why you would, but tips can be disabled in settings.",
+  "The hardest feature  to make was loans.",
+  "Loans are a quick way of getting the funds for an investment. Keep the due date in mind though. It may cost you all your assets.",
+  "Upgrade your buildings if you are looking for an affordable increase in income.",
+  "Are you a developer? Concider joining the discord server to help with the game. ",
+  "No idea how you would do it, but you can upgrade the floor heating of a cardboard box in this game",
+  "Go ahead, use an autoclicker. It wont get you enough money anyways.",
 ];
-if (localStorage.getItem("tipsOn") == "true") {
+if (localStorage.getItem("tipsOn") != "false") {
   document.getElementById("tip").innerHTML =
     "Tip: " + Random[Math.floor(Math.random() * Random.length)];
 }
@@ -113,27 +119,46 @@ function stockChange() {
     today.getMinutes();
   stocks = JSON.parse(localStorage.getItem("stocks"));
   prestep = rn - localStorage.getItem("lastIncome");
-  for (var l = 0; l < prestep; l++) {
-    for (var i = 0; i < stocks.length; i++) {
-      ranNum = Math.random() * 100;
-      if (ranNum > 50) {
-        if (stocks[i].currValue < 90) {
-          stocks[i].currValue += parseInt(Math.random() * 15);
-          console.log(stocks[i].Name + " gained " + stocks[i].currValue);
+  if (prestep < 100) {
+    for (var l = 0; l < prestep; l++) {
+      for (var i = 0; i < stocks.length; i++) {
+        ranNum = Math.random() * 100;
+        if (ranNum > 50) {
+          if (stocks[i].currValue < 90) {
+            stocks[i].currValue += parseInt(Math.random() * 15);
+            console.log(stocks[i].Name + " gained " + stocks[i].currValue);
+          }
         }
-      }
-      if (stocks[i].currValue > 90) {
-        stocks[i].currValue = 5;
-      }
-      if (ranNum < 50) {
-        if (stocks[i].currValue > 6) {
-          stocks[i].currValue -= parseInt(Math.random() * 10);
-          console.log(stocks[i].Name + " lost " + stocks[i].currValue);
+        if (stocks[i].currValue > 90) {
+          stocks[i].currValue = 5;
         }
+        if (ranNum < 50) {
+          if (stocks[i].currValue > 6) {
+            stocks[i].currValue -= parseInt(Math.random() * 10);
+            console.log(stocks[i].Name + " lost " + stocks[i].currValue);
+          }
+        }
+        //Do something
       }
+      localStorage.setItem("stocks", JSON.stringify(stocks));
       //Do something
     }
-    localStorage.setItem("stocks", JSON.stringify(stocks));
-    //Do something
   }
+}
+
+let today = new Date();
+let rn =
+  today.getFullYear() * 12 * 30 + today.getMonth() * 30 + today.getDate();
+console.log(" rn is " + rn);
+if (
+  localStorage.getItem("debtDue") - rn < 1 &&
+  localStorage.getItem("debtDue") - rn > -90 &&
+  localStorage.getItem("debt") > 1
+) {
+  alert("your debt was taken from your account due to expired due date.");
+  localStorage.setItem(
+    "money",
+    parseInt(localStorage.getItem("money")) - localStorage.getItem("debt")
+  );
+  localStorage.setItem("debt", 0);
 }

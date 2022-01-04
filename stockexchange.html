@@ -112,6 +112,7 @@
           mystock[heh].owned =
             parseInt(mystock[heh].owned) +
             parseInt(document.getElementById("myRange").value);
+          mystock[heh].pVal = all[last].currValue;
         } else {
           mystock.push({
             Name: all[last].Name,
@@ -121,6 +122,7 @@
         }
         localStorage.setItem("ownedStocks", JSON.stringify(mystock));
         console.log(localStorage.getItem("ownedStocks"));
+        document.getElementById("myModal").style.display = "none";
       } else {
         alert("insufficient funds!");
       }

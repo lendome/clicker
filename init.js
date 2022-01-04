@@ -152,7 +152,12 @@ if (parseInt(localStorage.getItem("init")) != 1) {
       rentIncome: 4600,
       img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmlsbGF8ZW58MHx8MHx8&auto=format&fit=crop&w=1200&q=60",
     },
-
+    {
+      name: "Apartment building",
+      price: 7500000,
+      rentIncome: 52000,
+      img: "https://mapio.net/images-immo-expose/3744133/objekt-5-achtung-nur-mit-wbs-top-3-zimmerebk2xbalkonesszimmerfahrstuhl-in-lichterfelde-img-0.jpg",
+    },
     {
       name: "Skyscraper",
       price: 10000000,
@@ -178,6 +183,12 @@ if (parseInt(localStorage.getItem("init")) != 1) {
       img: "https://images.unsplash.com/photo-1597425198328-539620c5cfcf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8am9yZGFuJTIwcm9tYW4lMjB0aGVhdHJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1200&q=60",
     },
     {
+      name: "Nontando",
+      price: 1200000000,
+      rentIncome: 120000,
+      img: "https://images.unsplash.com/photo-1612404459571-ccef4b6588e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bmludGVuZG8lMjBjb21wYW55fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
       name: "World trade center",
       price: 2300000000,
       rentIncome: 140000,
@@ -188,6 +199,12 @@ if (parseInt(localStorage.getItem("init")) != 1) {
       price: 7000000000,
       rentIncome: 194000,
       img: "https://images.unsplash.com/photo-1526490025555-53f98769ce26?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWVyY2VkZXMlMjBidWlsZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "Tower of pisa",
+      price: 8030000000,
+      rentIncome: 360000,
+      img: "https://images.unsplash.com/photo-1543429776-2782fc8e1acd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dG93ZXIlMjBvZiUyMHBpc2F8ZW58MHx8MHx8&auto=format&fit=crop&w=1200&q=60",
     },
     {
       name: "Homeless shelter (all of it)",
@@ -220,10 +237,28 @@ if (parseInt(localStorage.getItem("init")) != 1) {
       img: "https://images.unsplash.com/photo-1591079751210-718012d90ff7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVpY2hzdGFnfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1200&q=60",
     },
     {
+      name: "White house",
+      price: 492000000000,
+      rentIncome: 9200000,
+      img: "https://images.unsplash.com/photo-1593047614267-378b863c98c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2hpdGUlMjBob3VzZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "Eiffel tower",
+      price: 500000000000,
+      rentIncome: 9520000,
+      img: "https://images.unsplash.com/photo-1543349689-9a4d426bee8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZWlmZmVsJTIwdG93ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
       name: "Sphinx",
       price: 550000000000,
       rentIncome: 10000000,
       img: "https://images.unsplash.com/photo-1606419598525-3e3ff204b937?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Z2l6YXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: " colosseum",
+      price: 630000000000,
+      rentIncome: 11000000,
+      img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29sb3NzZXVtfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1200&q=60",
     },
 
     {
@@ -242,17 +277,61 @@ if (parseInt(localStorage.getItem("init")) != 1) {
     },
   ];
   let vehicles = [
-    { name: "cheap bike", price: 40, img: "" },
-    { name: "Okay-ish bike", price: 60, img: "" },
-    { name: "Used Colf 1 (bad condition)", price: 700, img: "" },
-    { name: "aodi a5 2001", price: 1100, img: "" },
-    { name: "cheap hatchback", price: 2000, img: "" },
-    { name: "Eord fusion", price: 10000, img: "" },
-    { name: "school bus", price: 12000, img: "" },
-    { name: "walk (less carbon footprint)", price: 0, img: "" },
-    { name: "lombargine machine", price: 300000, img: "" },
-    { name: "Roys roys", price: 500000, img: "" },
-    { name: "lambogine", price: 1200000, img: "" },
+    {
+      name: "cheap bike",
+      price: 40,
+      img: "https://images.unsplash.com/photo-1458228269118-09f55da39bfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8b2xkJTIwYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "Okay-ish bike",
+      price: 60,
+      img: "https://images.unsplash.com/photo-1593764592116-bfb2a97c642a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJpa2V8ZW58MHx8MHx8&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "Used Colf 1 (bad condition)",
+      price: 700,
+      img: "https://images.unsplash.com/photo-1556155304-28f97c2c4c62?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZiUyMHZ3fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "aodi a5 2001",
+      price: 1100,
+      img: "https://images.unsplash.com/photo-1527593382133-57352edcb994?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YXVkaSUyMG9sZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "cheap hatchback",
+      price: 2000,
+      img: "https://images.unsplash.com/photo-1585251027750-624a5bf40dc9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aGF0Y2hiYWNrfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "Eord American quarter horse",
+      price: 10000,
+      img: "https://images.unsplash.com/photo-1581650107963-3e8c1f48241b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGZvcmR8ZW58MHx8MHx8&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "school bus",
+      price: 12000,
+      img: "https://images.unsplash.com/photo-1613688263142-67f1e0c25ef1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2Nob29sJTIwYnVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "walk (less carbon footprint)",
+      price: 0,
+      img: "https://images.unsplash.com/photo-1562440469-fc4588d94d0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHdhbGt8ZW58MHx8MHx8&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "lombargine machine",
+      price: 300000,
+      img: "https://images.unsplash.com/photo-1622058232222-2700277d1a56?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8bGFtYm9yZ2hpbmklMjBvbGR8ZW58MHx8MHx8&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "Roys roys",
+      price: 500000,
+      img: "https://images.unsplash.com/photo-1632548260498-b7246fa466ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHJvbGxzJTIwcm95Y2V8ZW58MHx8MHx8&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "lambogine",
+      price: 1200000,
+      img: "https://images.unsplash.com/photo-1611900713725-864f48309d67?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGxhbWJvcmdoaW5pfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1200&q=60",
+    },
   ];
   let ownedVehicles = [
     { name: "legs. They work so why complain?", price: "infinite" },
@@ -263,6 +342,7 @@ if (parseInt(localStorage.getItem("init")) != 1) {
   localStorage.setItem("ownedEstate", JSON.stringify(ownedEstate));
   localStorage.setItem("ownedVehicles", JSON.stringify(ownedVehicles));
   localStorage.setItem("ownedStocks", JSON.stringify(ownedStocks));
+  localStorage.setItem("debt", 0);
   localStorage.setItem("money", "0");
   localStorage.setItem("rate", 1);
   localStorage.setItem("init", 1);
