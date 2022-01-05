@@ -35,6 +35,7 @@ var Random = [
   "Lendo is the best stock. Invest in it.",
   "If it didnt have ads, id probably be dead.",
   "I dont know why you would, but tips can be disabled in settings.",
+  "Ive done everything i could to make the game hard to conquer.",
   "The hardest feature  to make was loans.",
   "Loans are a quick way of getting the funds for an investment. Keep the due date in mind though. It may cost you all your assets.",
   "Upgrade your buildings if you are looking for an affordable increase in income.",
@@ -155,10 +156,12 @@ if (
   localStorage.getItem("debtDue") - rn > -90 &&
   localStorage.getItem("debt") > 1
 ) {
-  alert("your debt was taken from your account due to expired due date.");
+  alert(
+    "Your debt has not been paid in time, and has therefore been subtracted from your balance along with a fine."
+  );
   localStorage.setItem(
     "money",
-    parseInt(localStorage.getItem("money")) - localStorage.getItem("debt")
+    parseInt(localStorage.getItem("money")) - localStorage.getItem("debt") * 3
   );
   localStorage.setItem("debt", 0);
 }

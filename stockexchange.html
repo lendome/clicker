@@ -76,9 +76,9 @@
             parseInt(localStorage.getItem("money")) / lastCurr
           );
         }
-        document.getElementById(
-          "totalInfo"
-        ).innerHTML = `Total value of ${estates[id].Name}: ${estates[id].totalValue}$`;
+        document.getElementById("totalInfo").innerHTML = `Total value of ${
+          estates[id].Name
+        }: ${estates[id].totalValue.toLocaleString()}$`;
         document.getElementById("pps").innerHTML = `Price per share: ${parseInt(
           estates[id].currValue
         )}$`;
@@ -87,7 +87,7 @@
     }
     function buyShares() {
       if (
-        parseInt(localStorage.getItem("money")) >
+        parseInt(localStorage.getItem("money")) >=
         lastCurr * document.getElementById("myRange").value
       ) {
         last = localStorage.getItem("lastStock");

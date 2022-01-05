@@ -33,7 +33,7 @@
       <div class="slidecontainer">
         <input
           type="range"
-          min="10000"
+          min="100000"
           max="100000000000"
           value="10000"
           class="slider"
@@ -47,9 +47,9 @@
     </div>
   </body>
   <script>
-    if (parseInt(localStorage.getItem("money")) < 10000) {
+    if (parseInt(localStorage.getItem("money")) < 100000) {
       window.location.assign("menu.html");
-      alert("you will need at least 10000 to create a real estate.");
+      alert("you will need at least 100000 to create a real estate.");
     }
     document.getElementById("myRange").setAttribute(
       "max",
@@ -74,7 +74,7 @@
             name: document.getElementById("estateName").value,
             price: parseInt(document.getElementById("myRange").value),
             rentIncome: parseInt(
-              parseInt(document.getElementById("myRange").value) / 100
+              parseInt(document.getElementById("myRange").value) / 10000
             ),
             img: document.getElementById("imgUrl").value,
           });
@@ -92,11 +92,11 @@
     var output = document.getElementById("output");
     var rentpay = document.getElementById("rentPay");
     output.innerHTML = "Value: " + slider.value + "$"; // Display the default slider value
-    rentpay.innerHTML = "Rent income: " + slider.value / 1000 + "$";
+    rentpay.innerHTML = "Rent income: " + slider.value / 10000 + "$";
     // Update the current slider value (each time you drag the slider handle)
     slider.oninput = function () {
       output.innerHTML = "Value: " + this.value.toLocaleString() + "$";
-      rentpay.innerHTML = "Rent income: " + parseInt(this.value / 1000) + "$";
+      rentpay.innerHTML = "Rent income: " + parseInt(this.value / 10000) + "$";
     };
   </script>
 </html>

@@ -50,6 +50,69 @@ if (parseInt(localStorage.getItem("init")) != 1) {
       currValue: 39,
       owned: "0",
     },
+
+    {
+      Name: "McJosephs",
+      totalValue: 0.12,
+      currValue: 1,
+      owned: 0,
+    },
+
+    {
+      Name: "ligo",
+      totalValue: 582958286,
+      currValue: 6,
+      owned: 0,
+    },
+
+    {
+      Name: "Iyos",
+      totalValue: 7546425312,
+      currValue: 72,
+      owned: 0,
+    },
+
+    {
+      Name: "Eord",
+      totalValue: 5238238,
+      currValue: 12,
+      owned: 0,
+    },
+
+    {
+      Name: "lombarghine machine",
+      totalValue: 85181548,
+      currValue: 36,
+      owned: 0,
+    },
+
+    {
+      Name: "unEpic games",
+      totalValue: 34913,
+      currValue: 38,
+      owned: 0,
+    },
+
+    {
+      Name: "CrossHair",
+      totalValue: 34682515,
+      currValue: 53,
+      owned: 0,
+    },
+
+    {
+      Name: "lkea furniture",
+      totalValue: 1357214,
+      currValue: 7,
+      owned: 0,
+    },
+
+    {
+      Name: "Wahdan Inc",
+      totalValue: 852348691325,
+      currValue: 9,
+      owned: 0,
+    },
   ];
 
   let ownedStocks = [
@@ -153,6 +216,12 @@ if (parseInt(localStorage.getItem("init")) != 1) {
       img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmlsbGF8ZW58MHx8MHx8&auto=format&fit=crop&w=1200&q=60",
     },
     {
+      name: "Amusement park",
+      price: 5000000,
+      rentIncome: 491,
+      img: "",
+    },
+    {
       name: "Apartment building",
       price: 7500000,
       rentIncome: 52000,
@@ -217,6 +286,12 @@ if (parseInt(localStorage.getItem("init")) != 1) {
       price: 10000000000,
       rentIncome: 194000,
       img: "https://images.unsplash.com/photo-1541447271487-09612b3f49f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHNreXNjcmFwZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=1200&q=60",
+    },
+    {
+      name: "mount rushmore",
+      price: 12000000000,
+      rentIncome: 502990,
+      img: "",
     },
     {
       name: "burj khalifa",

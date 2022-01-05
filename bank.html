@@ -34,7 +34,7 @@
           class="slider"
           id="payRange"
         />
-        <button onclick="paydebt()" id="payAmmount">Pay off 0$</button>
+        <button onclick="paydebt()" id="payAmmount">Pay off 1$</button>
       </div>
     </div>
 
@@ -91,7 +91,7 @@
         document.getElementById("myRange").setAttribute(
           "max",
 
-          parseInt(localStorage.getItem("money")) * 10
+          parseInt(localStorage.getItem("money")) * 5
         );
       }
     }
@@ -141,7 +141,7 @@
     }
     function takeLoan() {
       if (parseInt(localStorage.getItem("money")) < 10000000000) {
-        if (localStorage.getItem("debt") < 999999) {
+        if (localStorage.getItem("debt") < 10) {
           localStorage.setItem(
             "money",
             parseInt(localStorage.getItem("money")) +
@@ -151,7 +151,7 @@
             "debt",
             parseInt(localStorage.getItem("debt")) +
               parseInt(document.getElementById("myRange").value) +
-              parseInt(document.getElementById("myRange").value / 50)
+              parseInt(document.getElementById("myRange").value / 20)
           );
           document.getElementById("debtCount").innerHTML =
             "You owe " + localStorage.getItem("debt").toLocaleString() + "$";
@@ -195,7 +195,7 @@
     slider.oninput = function () {
       output.innerHTML = this.value.toLocaleString() + "$";
       document.getElementById("housePrice").innerHTML = `Interest: ${parseInt(
-        this.value / 50
+        this.value / 20
       ).toLocaleString()}$`;
     };
     var payRange = document.getElementById("payRange");
