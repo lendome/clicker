@@ -32,6 +32,7 @@ var Random = [
   "I added Creator because i didnt want to add more real estate.",
   "Dont trust the sympathic alerts. They are bait.",
   "One of the real estates is a friend's old house.",
+  "Stay tuned for online multiplayer!",
   "Lendo is the best stock. Invest in it.",
   "If it didnt have ads, id probably be dead.",
   "I dont know why you would, but tips can be disabled in settings.",
@@ -131,7 +132,6 @@ function stockChange() {
           }
         }
         if (stocks[i].currValue < 3) {
-          stocks[i].currValue = 15;
         }
         if (stocks[i].currValue > 1000) {
           stocks[i].currValue = parseInt(Math.random() * 15);
@@ -166,5 +166,28 @@ if (
     "money",
     parseInt(localStorage.getItem("money")) - localStorage.getItem("debt") * 3
   );
+  sendmsg(
+    "Someone didnt pay his debt and it cost him " +
+      (localStorage.getItem("debt") * 3).toLocaleString() +
+      "$"
+  );
   localStorage.setItem("debt", 0);
+}
+function sendmsg(msg) {
+  const request = new XMLHttpRequest();
+  request.open(
+    "POST",
+    "https://discord.com/api/webhooks/928611032451121152/f4qpvZTEIZH46pTFD1KUKUKlXKOtX31UW54jruJeAq1ydyxduZ9c3uhx0rU4Az4PKZDk"
+  );
+
+  request.setRequestHeader("Content-type", "application/json");
+
+  const params = {
+    username: "logBot",
+    avatar_url:
+      "https://cdn.discordapp.com/attachments/822543812253581422/928611564318244894/logo.png",
+    content: msg,
+  };
+
+  request.send(JSON.stringify(params));
 }

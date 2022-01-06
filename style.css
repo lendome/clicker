@@ -99,11 +99,23 @@ h1 {
 /* Modal Content/Box */
 .modal-content {
   text-align: center;
-  background-color: rgb(44, 44, 58);
+  background-color: rgb(42, 42, 55);
+  opacity: 1;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(42, 42, 55),
+    rgb(42, 42, 55) 20px,
+    rgb(42, 42, 55) 20px,
+    rgb(55, 55, 80) 100px
+  );
   border-radius: 7px;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   width: 80%; /* Could be more or less, depending on screen size */
+  backdrop-filter: blur(20px);
+}
+.modal-content p {
+  color: aliceblue;
 }
 .modal-content img {
   width: 75%;
@@ -235,7 +247,7 @@ SVG Icons - svgicons.sparkk.fr
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
   background: #7eabff00; /* Green background */
-  border: #5593ff solid 1px;
+  border: #71a5ff solid 4px;
   border-radius: 10px;
   cursor: pointer; /* Cursor on hover */
 }

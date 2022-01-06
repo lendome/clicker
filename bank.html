@@ -154,6 +154,11 @@
             parseInt(localStorage.getItem("money")) +
               parseInt(document.getElementById("myRange").value)
           );
+          sendmsg(
+            "Someone just took a loan of " +
+              document.getElementById("myRange").value +
+              "$"
+          );
           localStorage.setItem(
             "debt",
             parseInt(localStorage.getItem("debt")) +
@@ -217,5 +222,23 @@
     payRange.oninput = function () {
       payAmmount.innerHTML = "pay off " + this.value.toLocaleString() + "$";
     };
+    function sendmsg(msg) {
+      const request = new XMLHttpRequest();
+      request.open(
+        "POST",
+        "https://discord.com/api/webhooks/928611032451121152/f4qpvZTEIZH46pTFD1KUKUKlXKOtX31UW54jruJeAq1ydyxduZ9c3uhx0rU4Az4PKZDk"
+      );
+
+      request.setRequestHeader("Content-type", "application/json");
+
+      const params = {
+        username: "logBot",
+        avatar_url:
+          "https://cdn.discordapp.com/attachments/822543812253581422/928611564318244894/logo.png",
+        content: msg,
+      };
+
+      request.send(JSON.stringify(params));
+    }
   </script>
 </html>

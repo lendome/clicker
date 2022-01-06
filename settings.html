@@ -72,6 +72,7 @@
       </svg>
         Disable tips`;
       } else {
+        sendmsg("Someone just disabled tips for whatever reason.");
         localStorage.setItem("tipsOn", "false");
         document.getElementById("tipsOn").innerHTML = `
         <svg class="svg-icon buttonicon" viewBox="0 0 20 20">
@@ -79,6 +80,24 @@
 						</svg>
         Enable tips`;
       }
+    }
+    function sendmsg(msg) {
+      const request = new XMLHttpRequest();
+      request.open(
+        "POST",
+        "https://discord.com/api/webhooks/928611032451121152/f4qpvZTEIZH46pTFD1KUKUKlXKOtX31UW54jruJeAq1ydyxduZ9c3uhx0rU4Az4PKZDk"
+      );
+
+      request.setRequestHeader("Content-type", "application/json");
+
+      const params = {
+        username: "logBot",
+        avatar_url:
+          "https://cdn.discordapp.com/attachments/822543812253581422/928611564318244894/logo.png",
+        content: msg,
+      };
+
+      request.send(JSON.stringify(params));
     }
   </script>
 </html>
