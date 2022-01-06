@@ -63,19 +63,13 @@
         estates = JSON.parse(localStorage.getItem("stocks"));
         lastCurr = estates[id].currValue;
         lastTotal = estates[id].totalValue;
-        if (parseInt(localStorage.getItem("money")) < lastTotal) {
-          document.getElementById("myRange").setAttribute(
-            "max",
 
-            parseInt(estates[id].totalValue) / parseInt(estates[id].currValue)
-          );
-        } else {
-          document.getElementById("myRange").setAttribute(
-            "max",
+        document.getElementById("myRange").setAttribute(
+          "max",
 
-            parseInt(localStorage.getItem("money")) / lastCurr
-          );
-        }
+          parseInt(localStorage.getItem("money")) / lastCurr
+        );
+
         document.getElementById("totalInfo").innerHTML = `Total value of ${
           estates[id].Name
         }: ${estates[id].totalValue.toLocaleString()}$`;
@@ -134,7 +128,7 @@
       for (let i = 0; i < stocks.length; i++) {
         btn = document.createElement("div");
         btn.innerHTML = `<button id="${i}" onclick="lastStock(this.id)">
-          <p style="float: left;">${i}</p>${stocks[i].Name}</button>`;
+          <p style="float: left;">${i}</p>${stocks[i].Name}<p style="color: gray;"> Price per share: ${stocks[i].currValue}$</p></button>`;
 
         document.body.appendChild(btn);
       }
