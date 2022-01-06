@@ -86,11 +86,7 @@
       ) {
         last = localStorage.getItem("lastStock");
         all = JSON.parse(localStorage.getItem("stocks"));
-        sum =
-          parseInt(localStorage.getItem("money")) -
-          all[last].currValue * document.getElementById("myRange").value;
-        console.log(sum);
-        localStorage.setItem("money", sum);
+
         mystock = JSON.parse(localStorage.getItem("ownedStocks"));
         let match = false;
         let heh = 0;
@@ -103,16 +99,33 @@
           //Do something
         }
         if (match) {
-          mystock[heh].owned =
-            parseInt(mystock[heh].owned) +
-            parseInt(document.getElementById("myRange").value);
-          mystock[heh].pVal = all[last].currValue;
+          if (
+            mystock[heh].owned >=
+            parseInt(all[last].totalValue) / all[last].currValue
+          ) {
+            alert("You already own all the available stocks of the company!");
+          } else {
+            mystock[heh].owned =
+              parseInt(mystock[heh].owned) +
+              parseInt(document.getElementById("myRange").value);
+            mystock[heh].pVal = all[last].currValue;
+            sum =
+              parseInt(localStorage.getItem("money")) -
+              all[last].currValue * document.getElementById("myRange").value;
+            console.log(sum);
+            localStorage.setItem("money", sum);
+          }
         } else {
           mystock.push({
             Name: all[last].Name,
             owned: document.getElementById("myRange").value,
             pVal: all[last].currValue,
           });
+          sum =
+            parseInt(localStorage.getItem("money")) -
+            all[last].currValue * document.getElementById("myRange").value;
+          console.log(sum);
+          localStorage.setItem("money", sum);
         }
         localStorage.setItem("ownedStocks", JSON.stringify(mystock));
         console.log(localStorage.getItem("ownedStocks"));

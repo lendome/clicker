@@ -125,13 +125,16 @@ function stockChange() {
       for (var i = 0; i < stocks.length; i++) {
         ranNum = Math.random() * 100;
         if (ranNum > 50) {
-          if (stocks[i].currValue < 90) {
+          if (stocks[i].currValue < 1000 && stocks[i].currValue > 3) {
             stocks[i].currValue += parseInt(Math.random() * 15);
             console.log(stocks[i].Name + " gained " + stocks[i].currValue);
           }
         }
-        if (stocks[i].currValue > 90) {
-          stocks[i].currValue = 5;
+        if (stocks[i].currValue < 3) {
+          stocks[i].currValue = 15;
+        }
+        if (stocks[i].currValue > 1000) {
+          stocks[i].currValue = parseInt(Math.random() * 15);
         }
         if (ranNum < 50) {
           if (stocks[i].currValue > 6) {

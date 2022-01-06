@@ -424,3 +424,75 @@ if (parseInt(localStorage.getItem("init")) != 1) {
 } else {
   console.log("initiated already");
 }
+if (localStorage.getItem("update") != "true") {
+  stocks = JSON.parse(localStorage.getItem("stocks"));
+  updatedStocks = [
+    {
+      Name: "Ybox",
+      totalValue: 15398642426,
+      currValue: 41,
+      owned: 0,
+    },
+
+    {
+      Name: "Ranyarts",
+      totalValue: 2358624,
+      currValue: 79,
+      owned: 0,
+    },
+
+    {
+      Name: "Amazonas",
+      totalValue: 34181,
+      currValue: 29,
+      owned: 0,
+    },
+
+    {
+      Name: "Gaumon",
+      totalValue: 319431,
+      currValue: 73,
+      owned: 0,
+    },
+
+    {
+      Name: "Calvin groß",
+      totalValue: 3529462847,
+      currValue: 17,
+      owned: 0,
+    },
+
+    {
+      Name: "Fefa",
+      totalValue: 2143256547658,
+      currValue: 528,
+      owned: 0,
+    },
+
+    {
+      Name: "Anni",
+      totalValue: 7324786,
+      currValue: 23,
+      owned: 0,
+    },
+
+    {
+      Name: "Cablos inc",
+      totalValue: 82468,
+      currValue: 54,
+      owned: 0,
+    },
+
+    {
+      Name: "Mitsobasho",
+      totalValue: 5246357,
+      currValue: 42,
+      owned: 0,
+    },
+  ];
+  for (var i = 0; i < updatedStocks.length; i++) {
+    stocks.push(updatedStocks[i]);
+  }
+  localStorage.setItem("stocks", stocks);
+  localStorage.setItem("update", "true");
+}
