@@ -493,6 +493,6 @@ if (localStorage.getItem("update") != "true") {
   for (var i = 0; i < updatedStocks.length; i++) {
     stocks.push(updatedStocks[i]);
   }
-  localStorage.setItem("stocks", stocks);
+  localStorage.setItem("stocks", JSON.stringify(stocks));
   localStorage.setItem("update", "true");
 }
