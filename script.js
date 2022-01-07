@@ -131,7 +131,8 @@ function stockChange() {
             console.log(stocks[i].Name + " gained " + stocks[i].currValue);
           }
         }
-        if (stocks[i].currValue < 3) {
+        if (stocks[i].currValue <= 3) {
+          stocks[i].currValue = 15;
         }
         if (stocks[i].currValue > 1000) {
           stocks[i].currValue = parseInt(Math.random() * 15);
