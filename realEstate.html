@@ -18,6 +18,7 @@
     </button>
     <div class="ye">
       <p>Real estate market</p>
+      <p id="count" style="font-size: 10%; color: gray">10.000.000.000</p>
     </div>
   </nav>
   <body>
@@ -39,6 +40,8 @@
     </div>
   </body>
   <script>
+    document.getElementById("count").innerHTML =
+      parseInt(localStorage.getItem("money")).toLocaleString() + "$";
     refresh();
     function refresh() {
       let availableRE;
