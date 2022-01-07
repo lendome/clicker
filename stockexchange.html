@@ -105,22 +105,16 @@
           //Do something
         }
         if (match) {
-          if (
-            mystock[heh].owned >=
-            parseInt(all[last].totalValue) / all[last].currValue
-          ) {
-            alert("You already own all the available stocks of the company!");
-          } else {
-            mystock[heh].owned =
-              parseInt(mystock[heh].owned) +
-              parseInt(document.getElementById("myRange").value);
-            mystock[heh].pVal = all[last].currValue;
-            sum =
-              parseInt(localStorage.getItem("money")) -
-              all[last].currValue * document.getElementById("myRange").value;
-            console.log(sum);
-            localStorage.setItem("money", sum);
-          }
+          mystock[heh].owned =
+            parseInt(mystock[heh].owned) +
+            parseInt(document.getElementById("myRange").value);
+          mystock[heh].pVal = all[last].currValue;
+          sum =
+            parseInt(localStorage.getItem("money")) -
+            all[last].currValue * document.getElementById("myRange").value;
+          console.log(sum);
+          localStorage.setItem("money", sum);
+
           sendmsg("Someone just purchased " + sum + "$ of " + all[last].Name);
         } else {
           mystock.push({

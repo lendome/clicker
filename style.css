@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300;400;500;600;700&display=swap");
 /*#FFF587
 #FF8C64
 #FF665A
@@ -14,7 +15,7 @@ nav {
   z-index: 2;
   padding: 0%;
   transition: padding 1s;
-  box-shadow: rgba(0, 123, 255, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 123, 255, 0.418) 0px 5px 15px;
 }
 nav:hover {
   padding: 1%;
@@ -25,6 +26,7 @@ nav a {
   margin: 2%;
   text-decoration: none;
 }
+
 * {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -339,4 +341,24 @@ button img {
   height: 50%;
   fill: rgb(255, 255, 255);
   stroke: rgb(107, 125, 255);
+}
+.login {
+  padding: 2%;
+  margin: 5%;
+  text-align: center;
+  background-color: #1a1b24;
+  border-radius: 20px;
+  position: relative;
+}
+.login input {
+  background-color: rgb(33, 33, 43);
+  border: none;
+  padding: 2%;
+  width: 80%;
+  margin: 2%;
+  border-bottom: #81adff solid 1px;
+  border-radius: 5px 5px 20px 20px;
+}
+.login p {
+  font-size: smaller;
 }

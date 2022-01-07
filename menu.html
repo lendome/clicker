@@ -28,7 +28,7 @@
       style="background-color: rgba(7, 7, 7, 0.301)"
       id="rateUp"
     >
-      Upgrade rate
+      Upgrade Income per click
     </button>
     <button onclick="window.location.href = 'bank.html'">
       <svg class="svg-icon buttonicon" viewBox="0 0 20 20">
@@ -110,6 +110,15 @@
       </svg>
       Arcade
     </button>
+    <button onclick="alert('Multiplayer currently in the works')">
+      <svg class="svg-icon buttonicon" viewBox="0 0 20 20">
+        <path
+          fill="none"
+          d="M10,0.531c-5.229,0-9.469,4.239-9.469,9.469S4.771,19.469,10,19.469s9.469-4.239,9.469-9.469S15.229,0.531,10,0.531 M11.128,18.525c-0.371,0.049-0.745,0.082-1.128,0.082c-4.754,0-8.608-3.854-8.608-8.607S5.246,1.392,10,1.392c0.383,0,0.758,0.034,1.128,0.083c1.976,2.269,3.176,5.281,3.176,8.525S13.103,16.257,11.128,18.525"
+        ></path>
+      </svg>
+      Global multiplayer
+    </button>
     <button
       style="color: rgb(182, 182, 180)"
       onclick="alert(localStorage.getItem('totalincome').toLocaleString()+ '$ is your income per minute.')"
@@ -144,7 +153,7 @@
         ></path>
       </svg>
   
-  Upgrade Rate (${(
+  Upgrade income per click (${(
     parseInt(localStorage.getItem("rate")) * 19
   ).toLocaleString()}$)  Current level: ${parseInt(
     localStorage.getItem("rate")
@@ -176,7 +185,7 @@
           d="M14.613,10c0,0.23-0.188,0.419-0.419,0.419H10.42v3.774c0,0.23-0.189,0.42-0.42,0.42s-0.419-0.189-0.419-0.42v-3.774H5.806c-0.23,0-0.419-0.189-0.419-0.419s0.189-0.419,0.419-0.419h3.775V5.806c0-0.23,0.189-0.419,0.419-0.419s0.42,0.189,0.42,0.419v3.775h3.774C14.425,9.581,14.613,9.77,14.613,10 M17.969,10c0,4.401-3.567,7.969-7.969,7.969c-4.402,0-7.969-3.567-7.969-7.969c0-4.402,3.567-7.969,7.969-7.969C14.401,2.031,17.969,5.598,17.969,10 M17.13,10c0-3.932-3.198-7.13-7.13-7.13S2.87,6.068,2.87,10c0,3.933,3.198,7.13,7.13,7.13S17.13,13.933,17.13,10"
         ></path>
       </svg>
-    Upgrade Rate (${(parseInt(localStorage.getItem("rate")) * 19)
+    Upgrade income per click (${(parseInt(localStorage.getItem("rate")) * 19)
       .toLocaleString()
 
       .toLocaleString()}$) Current level: ${parseInt(
