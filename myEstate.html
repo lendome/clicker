@@ -61,14 +61,14 @@
       estates = JSON.parse(localStorage.getItem("ownedEstate"));
       if (
         parseInt(localStorage.getItem("money")) >=
-        estates[lastid].rentIncome * 15
+        estates[lastid].rentIncome * 50
       ) {
         localStorage.setItem(
           "money",
           parseInt(localStorage.getItem("money")) -
-            estates[lastid].rentIncome * 15
+            estates[lastid].rentIncome * 50
         );
-        estates[lastid].rentIncome = estates[lastid].rentIncome * 2;
+        estates[lastid].rentIncome = estates[lastid].rentIncome * 1.2;
         localStorage.setItem("ownedEstate", JSON.stringify(estates));
         document.getElementById("houseRent").innerHTML =
           estates[lastid].rentIncome.toLocaleString() + "$";
@@ -77,7 +77,7 @@
           "Upgrade " +
           upgrades[Math.floor(Math.random() * upgrades.length)] +
           " " +
-          estates[lastid].rentIncome * 15 +
+          estates[lastid].rentIncome * 50 +
           "$";
       } else {
         alert("insufficient funds!");
