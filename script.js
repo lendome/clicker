@@ -198,10 +198,12 @@ function sendmsg(msg) {
 let prev = 0;
 function antiCheat() {
   console.log("anti cheat");
-  if (lastCash - prev > 15) {
-    alert("Could it be that you are using an autoclicker?");
+  if (lastCash - prev > 27) {
+    alert(
+      "Could it be that you are using an autoclicker? (if not i apologize)"
+    );
     document.getElementById("moneButton").onclick = "";
   }
   prev = lastCash;
 }
-setInterval(antiCheat, 1000);
+setInterval(antiCheat, 3000);

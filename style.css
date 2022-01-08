@@ -372,13 +372,14 @@ button img {
   position: relative;
   padding: 3vw;
   margin: 0;
-  width: 20vw;
+  width: 30vw;
   text-align: right;
 }
 .level progress {
   position: absolute;
   top: 50%;
-  right: 0;
+  left: 0;
+  width: 30vw;
 }
 #xpcount {
   position: absolute;

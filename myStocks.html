@@ -75,6 +75,7 @@
     }
     let lastCurr;
     let lastindex;
+    let prct;
     function lastEstate(id) {
       if (document.getElementById("myModal").style.display == "block") {
         document.getElementById("myModal").style.display = "none";
@@ -99,9 +100,10 @@
             heh = i;
           }
         }
-        document.getElementById("change").innerHTML =
-          parseInt((mystock[heh].currValue / estates[id].pVal) * 100 - 100) +
-          "%";
+        prct = parseInt(
+          (mystock[heh].currValue / estates[id].pVal) * 100 - 100
+        );
+        document.getElementById("change").innerHTML = prct + "%";
         console.log(mystock);
         console.log(heh);
         lastCurr = mystock[heh].currValue;
@@ -119,22 +121,9 @@
             lastCurr * document.getElementById("myRange").value
         );
 
-        estates = JSON.parse(localStorage.getItem("ownedStocks"));
-        mystock = JSON.parse(localStorage.getItem("stocks"));
-        let match = false;
-        let heh = 0;
-        for (var i = 0; i < mystock.length; i++) {
-          if (estates[lastindex].Name == mystock[i].Name) {
-            match = true;
-            heh = i;
-          }
-        }
+        (64 * 100) / 50;
         expUp =
-          lastCurr *
-            (document.getElementById("myRange").value / 100) *
-            (mystock[heh].currValue / estates[lastindex].pVal) *
-            100 -
-          100;
+          (lastCurr * document.getElementById("myRange").value * prct) / 100;
         localStorage.setItem(
           "exp",
           parseInt(localStorage.getItem("exp")) + expUp
