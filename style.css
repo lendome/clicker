@@ -116,6 +116,17 @@ h1 {
   width: 80%; /* Could be more or less, depending on screen size */
   backdrop-filter: blur(20px);
 }
+.modal-content input {
+  background-color: rgb(33, 33, 43);
+  border: none;
+  padding: 2%;
+  width: 90%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  color: wheat;
+  border-bottom: #81adff solid 1px;
+  border-radius: 5px 5px 20px 20px;
+}
 .modal-content p {
   color: aliceblue;
 }
@@ -217,6 +228,16 @@ SVG Icons - svgicons.sparkk.fr
   background-color: rgba(0, 0, 0, 0.473);
   width: fit-content;
   margin: auto;
+  border-radius: 20px;
+}
+.setting {
+  background-color: rgba(0, 0, 0, 0.473);
+  width: 90vw;
+  margin: auto;
+  border-radius: 20px;
+  padding: 3%;
+  font-size: x-small;
+  text-align: center;
 }
 .betBtn {
   width: 49%;
@@ -356,6 +377,15 @@ button img {
   position: relative;
 }
 .login input {
+  background-color: rgb(33, 33, 43);
+  border: none;
+  padding: 2%;
+  width: 80%;
+  margin: 2%;
+  border-bottom: #81adff solid 1px;
+  border-radius: 5px 5px 20px 20px;
+}
+input {
   background-color: rgb(33, 33, 43);
   border: none;
   padding: 2%;

@@ -7,7 +7,7 @@ function level() {
 
   lvlCount.innerHTML = "Lvl. " + parseInt(localStorage.getItem("level"));
 
-  let levelreq = level * level * 1000;
+  let levelreq = level * level * level * 1000;
   remaining.innerHTML = XP + "/" + levelreq + " exp";
   xpCount.max = levelreq;
   xpCount.value = XP;
