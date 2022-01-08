@@ -24,4 +24,4 @@ function level() {
   }
 }
 level();
-setInterval(level, 1000);
+setInterval(level, 10);
