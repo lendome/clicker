@@ -1,5 +1,5 @@
 let rate = parseInt(localStorage.getItem("rate"));
-
+let lastCash = 0;
 let moeneyCount = parseInt(localStorage.getItem("money"));
 var Random = [
   "Its best to buy a stock when it is around 9$ of value per share!",
@@ -65,6 +65,8 @@ function clickMoney() {
   document.getElementById("moneyCount").innerHTML =
     moeneyCount.toLocaleString() + "$";
   localStorage.setItem("money", parseInt(moeneyCount));
+  lastCash++;
+  localStorage.setItem("exp", parseInt(localStorage.getItem("exp")) + rate);
 }
 
 function income() {
@@ -88,6 +90,7 @@ function income() {
     "money",
     parseInt(localStorage.getItem("money")) + altstep
   );
+  localStorage.setItem("exp", parseInt(localStorage.getItem("exp")) + altstep);
 
   let moeneyCount = parseInt(localStorage.getItem("money"));
   document.getElementById("moneyCount").innerHTML =
@@ -192,3 +195,13 @@ function sendmsg(msg) {
 
   request.send(JSON.stringify(params));
 }
+let prev = 0;
+function antiCheat() {
+  console.log("anti cheat");
+  if (lastCash - prev > 15) {
+    alert("Could it be that you are using an autoclicker?");
+    document.getElementById("moneButton").onclick = "";
+  }
+  prev = lastCash;
+}
+setInterval(antiCheat, 1000);

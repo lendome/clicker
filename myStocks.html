@@ -118,6 +118,28 @@
           parseInt(localStorage.getItem("money")) +
             lastCurr * document.getElementById("myRange").value
         );
+
+        estates = JSON.parse(localStorage.getItem("ownedStocks"));
+        mystock = JSON.parse(localStorage.getItem("stocks"));
+        let match = false;
+        let heh = 0;
+        for (var i = 0; i < mystock.length; i++) {
+          if (estates[lastindex].Name == mystock[i].Name) {
+            match = true;
+            heh = i;
+          }
+        }
+        expUp =
+          lastCurr *
+            (document.getElementById("myRange").value / 100) *
+            (mystock[heh].currValue / estates[lastindex].pVal) *
+            100 -
+          100;
+        localStorage.setItem(
+          "exp",
+          parseInt(localStorage.getItem("exp")) + expUp
+        );
+
         estates = JSON.parse(localStorage.getItem("ownedStocks"));
         estates[lastindex].owned -= document.getElementById("myRange").value;
 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <script defer src="level.js"></script>
   </head>
   <nav>
     <button id="backbtn" onclick="window.location.href = 'menu.html' ">
@@ -21,6 +22,11 @@
     </button>
     <div class="ye">
       <p>Home</p>
+    </div>
+    <div class="level">
+      <p id="lvl">Lvl. 1</p>
+      <p id="xpcount">exp/required</p>
+      <progress id="exp" value="32" max="100">32%</progress>
     </div>
   </nav>
   <body>
