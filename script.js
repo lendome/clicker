@@ -12,6 +12,7 @@ var Random = [
   "Even when the app is closed, you will recieve your income per hour when its next opened. And no, it doesnt run in the background!",
   "Hell, might even add groceries next.",
   "Im out of tips. God help me.",
+  "There is a money limit, but no limit to how many stocks you can own. Invest your money so it stays.",
   "If you enjoy the game, concider rating it!",
   "Careful with the reset. One click and all your progress is gone.",
   "Any features you would like to have? Let me know on discord. Can be found in settings!",
@@ -23,12 +24,12 @@ var Random = [
   "Dont even concider clicking on tips, totally nothing will happen...",
   "You used to be able to buy the same real estates mutliple times, until a friend pointed it out.",
   "Do you like the game? Thank stackoverflow and coffe.",
-  "The price of the rate is always its level times 19.",
+  "The price of the Income per click is always its level times 19.",
   "If you somehow manage to get in the negatives, youre in for a surprise.",
   "I forgot to add limits to buying stocks, and am too lazy to do it.",
   "Your chance doesnt actually increase in lotto with more money on the line. Its a lie to make you lose.",
   "Chance of victory is 2% in lotto, and about 50% in coinflip. I said about due to another tip.",
-  "Income per minute may be inaccurate at times.",
+  "Income per minute may be inaccuIncome per click at times.",
   "I added Creator because i didnt want to add more real estate.",
   "Dont trust the sympathic alerts. They are bait.",
   "One of the real estates is a friend's old house.",
@@ -38,11 +39,15 @@ var Random = [
   "I dont know why you would, but tips can be disabled in settings.",
   "Ive done everything i could to make the game hard to conquer.",
   "The hardest feature  to make was loans.",
+  "Your level increases based on profit you make. meaning selling stocks will only give you exp for the profit percentage.",
+  "Is the upgrade button too slow? head over to the settings and put in a custom number.",
   "Loans are a quick way of getting the funds for an investment. Keep the due date in mind though. It may cost you all your assets.",
   "Upgrade your buildings if you are looking for an affordable increase in income.",
   "Are you a developer? Concider joining the discord server to help with the game. ",
   "No idea how you would do it, but you can upgrade the floor heating of a cardboard box in this game",
-  "Go ahead, use an autoclicker. It wont get you enough money anyways.",
+  "Go ahead, use an autoclicker.",
+  "Mass income per click upgrades can be found in the settings!",
+  "I will probably add accounts... at some point.",
 ];
 if (localStorage.getItem("tipsOn") != "false") {
   document.getElementById("tip").innerHTML =
@@ -59,8 +64,11 @@ if (moeneyCount < 0) {
   );
 }
 let output;
+
 function clickMoney() {
-  let moeneyCount = parseInt(localStorage.getItem("money"));
+  if (parseInt(localStorage.getItem("money")) < 90000000000000000000) {
+    let moeneyCount = parseInt(localStorage.getItem("money"));
+  }
   moeneyCount += 1 * rate;
   document.getElementById("moneyCount").innerHTML =
     moeneyCount.toLocaleString() + "$";
@@ -86,10 +94,15 @@ function income() {
   prestep = rn - localStorage.getItem("lastIncome");
 
   altstep = prestep * totalIncome;
-  localStorage.setItem(
-    "money",
-    parseInt(localStorage.getItem("money")) + altstep
-  );
+  if (
+    parseInt(localStorage.getItem("money")) < 90000000000000000000 &&
+    altstep < 50000000000000000000
+  ) {
+    localStorage.setItem(
+      "money",
+      parseInt(localStorage.getItem("money")) + altstep
+    );
+  }
   localStorage.setItem("exp", parseInt(localStorage.getItem("exp")) + altstep);
 
   let moeneyCount = parseInt(localStorage.getItem("money"));
@@ -128,7 +141,7 @@ function stockChange() {
     for (var l = 0; l < prestep; l++) {
       for (var i = 0; i < stocks.length; i++) {
         ranNum = Math.random() * 100;
-        if (ranNum > 50) {
+        if (ranNum > 70) {
           if (stocks[i].currValue < 1000) {
             stocks[i].currValue += parseInt(Math.random() * 15);
             console.log(stocks[i].Name + " gained " + stocks[i].currValue);
@@ -140,7 +153,7 @@ function stockChange() {
         if (stocks[i].currValue > 1000) {
           stocks[i].currValue = parseInt(Math.random() * 15);
         }
-        if (ranNum < 50) {
+        if (ranNum < 70) {
           if (stocks[i].currValue > 10) {
             stocks[i].currValue -= parseInt(Math.random() * 10);
             console.log(stocks[i].Name + " lost " + stocks[i].currValue);
@@ -199,9 +212,7 @@ let prev = 0;
 function antiCheat() {
   console.log("anti cheat");
   if (lastCash - prev > 27) {
-    alert(
-      "Could it be that you are using an autoclicker? (if not i apologize)"
-    );
+    alert("Cool it down a little!");
     document.getElementById("moneButton").onclick = "";
   }
   prev = lastCash;

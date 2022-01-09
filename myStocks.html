@@ -113,7 +113,8 @@
     }
     function sell() {
       if (
-        JSON.parse(localStorage.getItem("ownedStocks"))[lastindex].owned > 0
+        JSON.parse(localStorage.getItem("ownedStocks"))[lastindex].owned > 0 &&
+        parseInt(localStorage.getItem("money")) < 9000000000000000000
       ) {
         localStorage.setItem(
           "money",
@@ -141,7 +142,7 @@
             JSON.parse(localStorage.getItem("ownedStocks"))[lastindex].Name
         );
       } else {
-        alert("You dont own enough shares!");
+        alert("You dont own enough shares, or money limit reached!");
       }
     }
     var slider = document.getElementById("myRange");

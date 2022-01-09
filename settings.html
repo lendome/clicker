@@ -52,7 +52,8 @@
       <p>
         If the upgrade rate button is a bit too slow for you, simply put in how
         many times you would like to upgrade your rate below. (No price will be
-        shown but it will stop once your balance is depleted)
+        shown but it will stop once your balance is depleted) WARNING: MAY CRASH
+        YOUR DEVICE
       </p>
       <input type="number" name="" id="ammount" />
       <p id="rateUp"></p>
@@ -111,31 +112,36 @@
       request.send(JSON.stringify(params));
     }
     function upRate() {
-      for (var i = 0; i < document.getElementById("ammount").value; i++) {
-        localrate = parseInt(localStorage.getItem("rate"));
-        localmoney = parseInt(localStorage.getItem("money"));
-        if (localrate * 19 < localmoney) {
-          try {
-            localStorage.setItem("rate", localrate + 1);
-            console.log("upgraded rate to " + localrate + "  ");
-            localStorage.setItem(
-              "money",
-              localStorage.getItem("money") - localrate * 19
-            );
-            localStorage.setItem(
-              "exp",
-              praseInt(localStorage.getItem("exp")) + localrate
-            );
-          } catch (error) {
-            console.log(error);
-            localStorage.setItem("rate", localrate + 1);
-          }
-          document.getElementById("rateUp").innerHTML =
-            "Upgraded " + (i + 1) + " times.";
-        } else {
-          alert("insufficient funds.");
-          break;
+      localrate = parseInt(localStorage.getItem("rate"));
+      localmoney = parseInt(localStorage.getItem("money"));
+      if (
+        localrate * 19 * document.getElementById("ammount").value * 19 <
+        localmoney
+      ) {
+        try {
+          localStorage.setItem(
+            "rate",
+            localrate + parseInt(document.getElementById("ammount").value)
+          );
+          console.log("upgraded rate to " + localrate + "  ");
+          localStorage.setItem(
+            "money",
+            localStorage.getItem("money") -
+              localrate * 19 * document.getElementById("ammount").value * 19
+          );
+          localStorage.setItem(
+            "exp",
+            parseInt(localStorage.getItem("exp")) +
+              localrate * document.getElementById("ammount").value
+          );
+        } catch (error) {
+          console.log(error);
+          localStorage.setItem("rate", localrate + 1);
         }
+        document.getElementById("rateUp").innerHTML =
+          "Upgraded " + document.getElementById("ammount").value + " times.";
+      } else {
+        alert("insufficient funds.");
       }
     }
   </script>
