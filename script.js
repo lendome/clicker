@@ -94,15 +94,12 @@ function income() {
   prestep = rn - localStorage.getItem("lastIncome");
 
   altstep = prestep * totalIncome;
-  if (
-    parseInt(localStorage.getItem("money")) < 90000000000000000000 &&
-    altstep < 500000000000000000
-  ) {
-    localStorage.setItem(
-      "money",
-      parseInt(localStorage.getItem("money")) + altstep
-    );
-  }
+
+  localStorage.setItem(
+    "money",
+    parseInt(localStorage.getItem("money")) + altstep
+  );
+
   localStorage.setItem("exp", parseInt(localStorage.getItem("exp")) + altstep);
 
   let moeneyCount = parseInt(localStorage.getItem("money"));
