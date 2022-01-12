@@ -74,6 +74,7 @@
         lastid = id;
       }
     }
+
     function sell() {
       fetch(
         `https://www.rimenvori.com/API/v1/auth.php?user_token=${localStorage.getItem(
@@ -96,23 +97,22 @@
           }&rentIncome=${estates[lastid].rentIncome}&img=${
             estates[lastid].img
           }&uploader=${userid}`;
-
-          fetch(url)
-            .then(function (response) {
-              return response.json();
-            })
-            .then(function (data) {
-              console.log("data:");
-              console.log(data);
-
-              availableRE = data;
-            })
-            .catch(function () {
-              console.log("Booo");
-            });
-          estates.splice(lastid, 1);
-          localStorage.setItem("ownedEstate", JSON.stringify(estates));
-          window.location.href = "sell.html";
+          setTimeout(function () {
+            fetch(url)
+              .then(function (response) {
+                return response.json();
+              })
+              .then(function (data) {
+                console.log("data:");
+                console.log(data);
+                estates.splice(lastid, 1);
+                localStorage.setItem("ownedEstate", JSON.stringify(estates));
+                window.location.href = "sell.html";
+              })
+              .catch(function () {
+                console.log("Booo");
+              });
+          }, 1000);
         })
         .catch(function () {
           console.log("Booo");

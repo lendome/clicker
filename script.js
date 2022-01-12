@@ -208,10 +208,10 @@ function sendmsg(msg) {
 let prev = 0;
 function antiCheat() {
   console.log("anti cheat");
-  if (lastCash - prev > 27) {
+  if (lastCash - prev > 90) {
     alert("Cool it down a little!");
     document.getElementById("moneButton").onclick = "";
   }
   prev = lastCash;
 }
-setInterval(antiCheat, 3000);
+setInterval(antiCheat, 10000);

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    refresh();
+    function refresh() {
+      url =
+        "https://rimenvori.com/API/v1/leaderBoard.php?user_token=YsdKlJckXD1PaEUStNyH";
+
+      fetch(url)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          console.log("data:");
+          console.log(data);
+
+          availableRE = data;
+          for (let i = 0; i < availableRE.length; i++) {
+            btn = document.createElement("div");
+            btn.innerHTML = `<button id="${i}" onclick="lastEstate(this.id)">
+          <p style="float: left;">${i}</p>${
+              availableRE[i].name +
+              " " +
+              availableRE[i].price.toLocaleString() +
+              "$"
+            }</button>`;
+
+            document.body.appendChild(btn);
+          }
+        })
+        .catch(function () {
+          console.log("Booo");
+        });
+    }
+  </script>
+</html>

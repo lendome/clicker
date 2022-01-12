@@ -30,6 +30,7 @@
     </div>
     <button onclick="openMarket()">Marketplace</button>
     <button onclick="openSell()">Sell on Marketplace</button>
+    <button onclick="">Leaderboard (being fixed at the moment)</button>
     <button
       onclick="localStorage.removeItem('pass'); window.location.assign('menu.html')"
     >
@@ -70,6 +71,7 @@
         console.log("data:");
         console.log(data);
         document.getElementById("uname").innerHTML = data["username"];
+
         document.getElementById("lvl").innerHTML = data["level"];
         username = data["username"];
         level = data["level"];
