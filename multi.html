@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <nav>
+    <button id="backbtn" onclick="window.location.href = 'menu.html' ">
+      <svg class="svg-icon" viewBox="0 0 20 20">
+        <path
+          fill="none"
+          d="M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.203,0,0.406-0.08,0.559-0.236c0.303-0.309,0.295-0.803-0.012-1.104L8.388,10.049z"
+        ></path>
+      </svg>
+    </button>
+    <div class="ye">
+      <p>Lobby</p>
+    </div>
+  </nav>
+  <body>
+    <p style="height: 10vh"></p>
+    <div class="login">
+      <p>logged in as:</p>
+      <p id="uname"></p>
+      <p>Level:</p>
+      <p id="lvl"></p>
+    </div>
+    <button onclick="openMarket()">Marketplace</button>
+    <button onclick="openSell()">Sell on Marketplace</button>
+    <button
+      onclick="localStorage.removeItem('pass'); window.location.assign('menu.html')"
+    >
+      Log out
+    </button>
+  </body>
+
+  <script>
+    //https://rimenvori.com/API/v1/create.php?user_token=YsdKlJckXD1PaEUStNyH&name=ha&price=1&rentIncome=19&img=no&uploader=2
+    let username;
+    let level;
+
+    fetch(
+      `https://www.rimenvori.com/API/v1/stats.php?user_token=${localStorage.getItem(
+        "pass"
+      )}&level=${localStorage.getItem("level")}`
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log("data:");
+        console.log(data);
+      })
+      .catch(function () {
+        console.log("Booo");
+      });
+
+    fetch(
+      `https://www.rimenvori.com/API/v1/auth.php?user_token=${localStorage.getItem(
+        "pass"
+      )}`
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log("data:");
+        console.log(data);
+        document.getElementById("uname").innerHTML = data["username"];
+        document.getElementById("lvl").innerHTML = data["level"];
+        username = data["username"];
+        level = data["level"];
+      })
+      .catch(function () {
+        console.log("Booo");
+      });
+    function openMarket() {
+      if (localStorage.getItem("pass") == null) {
+        console.log("not logged in");
+        window.location.assign("login.html");
+      } else {
+        window.location.assign("market.html");
+      }
+    }
+    function openSell() {
+      if (localStorage.getItem("pass") == null) {
+        console.log("not logged in");
+        window.location.assign("login.html");
+      } else {
+        window.location.assign("sell.html");
+      }
+    }
+  </script>
+</html>

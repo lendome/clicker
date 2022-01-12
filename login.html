@@ -20,21 +20,20 @@
       <p>Lobby</p>
     </div>
   </nav>
-
   <body>
     <p style="height: 10vh"></p>
     <div class="login">
       <input type="text" name="" id="user" placeholder="username" />
       <input type="password" id="pass" placeholder="password" />
-      <button onclick="register()">register</button>
+      <button onclick="register()">login</button>
       <p id="result"></p>
-      <p>Already have an account? <a href="login.html">Login</a></p>
+      <p>Dont have an account? <a href="register.html">Register</a></p>
     </div>
   </body>
   <script>
     function register() {
       fetch(
-        `https://www.rimenvori.com/API/v1/register.php?api_key=ABCDEFGHIJKLMNOPQRSTUVWXYZ&user=${
+        `https://www.rimenvori.com/API/v1/login.php?api_key=ABCDEFGHIJKLMNOPQRSTUVWXYZ&user=${
           document.getElementById("user").value
         }&pass=${document.getElementById("pass").value}`
       )
@@ -44,6 +43,14 @@
         .then(function (data) {
           console.log(data);
           document.getElementById("result").innerHTML = data["message"];
+          if (data["message"] == "logged in.") {
+            try {
+              localStorage.setItem("pass", data["password"]);
+              window.location.assign("multi.html");
+            } catch (error) {
+              console.log(error);
+            }
+          }
         })
         .catch(function () {
           console.log("Booo");

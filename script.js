@@ -96,7 +96,7 @@ function income() {
   altstep = prestep * totalIncome;
   if (
     parseInt(localStorage.getItem("money")) < 90000000000000000000 &&
-    altstep < 50000000000000000000
+    altstep < 500000000000000000
   ) {
     localStorage.setItem(
       "money",
