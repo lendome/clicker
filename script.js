@@ -66,9 +66,7 @@ if (moeneyCount < 0) {
 let output;
 
 function clickMoney() {
-  if (parseInt(localStorage.getItem("money")) < 90000000000000000000) {
-    let moeneyCount = parseInt(localStorage.getItem("money"));
-  }
+  let moeneyCount = parseInt(localStorage.getItem("money"));
   moeneyCount += 1 * rate;
   document.getElementById("moneyCount").innerHTML =
     moeneyCount.toLocaleString() + "$";

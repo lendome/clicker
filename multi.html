@@ -27,9 +27,12 @@
       <p id="uname"></p>
       <p>Level:</p>
       <p id="lvl"></p>
+      <p>Money:</p>
+      <p id="mny"></p>
     </div>
     <button onclick="openMarket()">Marketplace</button>
     <button onclick="openSell()">Sell on Marketplace</button>
+    <button onclick="openSell()">Global bank</button>
     <button onclick="">Leaderboard (being fixed at the moment)</button>
     <button
       onclick="localStorage.removeItem('pass'); window.location.assign('menu.html')"
@@ -42,21 +45,40 @@
     //https://rimenvori.com/API/v1/create.php?user_token=YsdKlJckXD1PaEUStNyH&name=ha&price=1&rentIncome=19&img=no&uploader=2
     let username;
     let level;
-
     fetch(
-      `https://www.rimenvori.com/API/v1/stats.php?user_token=${localStorage.getItem(
+      `https://www.rimenvori.com/API/v1/auth.php?user_token=${localStorage.getItem(
         "pass"
-      )}&level=${localStorage.getItem("level")}`
+      )}`
     )
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
-        console.log("data:");
-        console.log(data);
-      })
-      .catch(function () {
-        console.log("Booo");
+        if (
+          data["level"] < parseInt(localStorage.getItem("level")) ||
+          data["money"] < parseInt(localStorage.getItem("money"))
+        ) {
+          fetch(
+            `https://www.rimenvori.com/API/v1/stats.php?user_token=${localStorage.getItem(
+              "pass"
+            )}&level=${localStorage.getItem(
+              "level"
+            )}&money=${localStorage.getItem("money")}`
+          )
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (data) {
+              console.log("data:");
+              console.log(data);
+            })
+            .catch(function () {
+              console.log("Booo");
+            });
+        } else {
+          localStorage.setItem("level", data["level"]);
+          localStorage.setItem("money", data["money"]);
+        }
       });
 
     fetch(
@@ -73,6 +95,8 @@
         document.getElementById("uname").innerHTML = data["username"];
 
         document.getElementById("lvl").innerHTML = data["level"];
+        document.getElementById("mny").innerHTML =
+          data["money"].toLocaleString() + "$";
         username = data["username"];
         level = data["level"];
       })

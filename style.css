@@ -404,18 +404,38 @@ input {
   padding: 3vw;
   margin: 0;
   width: 30vw;
-  text-align: right;
-  height: 5vh;
+  text-align: center;
 }
 .level progress {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 30vw;
+  display: none;
 }
 #xpcount {
-  position: absolute;
-  bottom: 10%;
-  right: 5%;
   font-size: x-small;
+  color: rgba(255, 255, 255, 0.5)55, 255, 255);
+}
+#lvl {
+  text-align: center;
+  background-color: #ff5a5a;
+  color: #1a1b24;
+  padding: 1%;
+  border-radius: 20px;
+  border-bottom: #8c2323 solid 5px;
+}
+#uname {
+  background-color: #fbff00;
+  color: #1a1b24;
+  padding: 1%;
+  border-radius: 20px;
+  border-bottom: #807015 solid 5px;
+}
+#mny {
+  background-color: #00ff2a;
+  color: #1a1b24;
+  padding: 1%;
+  border-radius: 20px;
+  border-bottom: #338024 solid 5px;
 }
