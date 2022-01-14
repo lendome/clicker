@@ -33,6 +33,10 @@
         <p id="housePrice">for NaN$?</p>
         <p>Rent per minute:</p>
         <p id="houseRent"></p>
+
+        <br />
+        <p>Sell for:</p>
+        <input type="number" name="" id="sellval" placeholder="10" />
         <br />
         <button onclick="sell()" id="buybtn">sell</button>
         <button onclick="lastEstate('-1')">back</button>
@@ -93,7 +97,7 @@
           url = `https://rimenvori.com/API/v1/create.php?user_token=${localStorage.getItem(
             "pass"
           )}&name=${estates[lastid].name}&price=${
-            estates[lastid].price
+            document.getElementById("sellval").value
           }&rentIncome=${estates[lastid].rentIncome}&img=${
             estates[lastid].img
           }&uploader=${userid}`;

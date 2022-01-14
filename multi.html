@@ -32,8 +32,10 @@
     </div>
     <button onclick="openMarket()">Marketplace</button>
     <button onclick="openSell()">Sell on Marketplace</button>
-    <button onclick="openSell()">Global bank</button>
-    <button onclick="">Leaderboard (being fixed at the moment)</button>
+    <button onclick="alert('soon')">Global bank</button>
+    <button onclick="window.location.assign('leaderboard.html')">
+      Leaderboard (being fixed at the moment)
+    </button>
     <button
       onclick="localStorage.removeItem('pass'); window.location.assign('menu.html')"
     >
@@ -54,10 +56,8 @@
         return response.json();
       })
       .then(function (data) {
-        if (
-          data["level"] < parseInt(localStorage.getItem("level")) ||
-          data["money"] < parseInt(localStorage.getItem("money"))
-        ) {
+        console.log(data["level"]);
+        if (parseInt(localStorage.getItem("level")) > data["level"]) {
           fetch(
             `https://www.rimenvori.com/API/v1/stats.php?user_token=${localStorage.getItem(
               "pass"
@@ -77,7 +77,6 @@
             });
         } else {
           localStorage.setItem("level", data["level"]);
-          localStorage.setItem("money", data["money"]);
         }
       });
 
